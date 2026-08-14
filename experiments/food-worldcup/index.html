@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>음식 월드컵 — kswany</title>
+    <meta name="description" content="두 음식 중 더 끌리는 쪽을 골라 오늘의 우승 메뉴를 가립니다. 브라우저에서만 실행됩니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="worldcup.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>실험실</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">WORLD CUP</div>
+        <h1>음식 월드컵</h1>
+        <p>두 음식 중 지금 더 먹고 싶은 쪽을 고르세요. 열여섯 가지를 줄여 가면 오늘의 우승 메뉴가 나옵니다. 선택은 이 브라우저에만 남습니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="hud" id="hud">
+          <span>라운드 <strong id="round-name">16강</strong></span>
+          <span>대결 <strong id="match-num">1</strong> / <strong id="match-total">8</strong></span>
+          <span>지난번 <strong id="last-winner">-</strong></span>
+        </div>
+
+        <div class="match" id="match" hidden>
+          <button class="food-btn" type="button" id="choice-a" aria-label="왼쪽 음식 고르기"></button>
+          <p class="versus" aria-hidden="true">대</p>
+          <button class="food-btn" type="button" id="choice-b" aria-label="오른쪽 음식 고르기"></button>
+        </div>
+
+        <div class="overlay" id="overlay">
+          <p class="winner-kicker">오늘의 우승</p>
+          <div class="winner-art" id="winner-art"></div>
+          <h2 class="section-title" id="winner-name" style="margin-top: 8px">-</h2>
+          <p class="reading" id="winner-hint"></p>
+          <div class="actions" style="margin-top: 14px">
+            <button class="primary" type="button" id="again">다시 하기</button>
+          </div>
+        </div>
+
+        <div class="actions" style="margin-top: 16px">
+          <button class="ghost" type="button" id="restart">새 대결</button>
+        </div>
+      </section>
+
+      <footer class="foot">© kswany · 선택은 방문자의 브라우저에서만 이뤄집니다</footer>
+    </div>
+    <script src="worldcup.js"></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>
