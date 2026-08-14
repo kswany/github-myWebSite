@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>사주 보기 — kswany</title>
+    <meta name="description" content="생년월일시로 사주팔자, 오행, 십성, 대운을 계산합니다. 계산은 브라우저에서만 이루어집니다." />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/site.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../">
+          <strong>kswany</strong>
+          <span>실험실</span>
+        </a>
+        <nav class="nav">
+          <a href="../">홈</a>
+          <a href="./" aria-current="page">사주</a>
+          <a href="../games/">게임</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">만세력</div>
+        <h1>사주 보기</h1>
+        <p>
+          양력 생년월일과 태어난 시각(한국 시간)을 넣으면 입춘·절기 기준으로 사주팔자를 계산합니다. 결과는 이 기기 안에서만 만들어지고, 어디에도 저장되지 않습니다.
+        </p>
+      </section>
+
+      <section class="panel">
+        <form class="saju-form" id="saju-form">
+          <div class="fields">
+            <div class="field">
+              <label for="year">출생 연도</label>
+              <select id="year" required></select>
+            </div>
+            <div class="field">
+              <label for="month">월</label>
+              <select id="month" required>
+                <option value="1">1월</option>
+                <option value="2">2월</option>
+                <option value="3">3월</option>
+                <option value="4">4월</option>
+                <option value="5" selected>5월</option>
+                <option value="6">6월</option>
+                <option value="7">7월</option>
+                <option value="8">8월</option>
+                <option value="9">9월</option>
+                <option value="10">10월</option>
+                <option value="11">11월</option>
+                <option value="12">12월</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="day">일</label>
+              <select id="day" required></select>
+            </div>
+            <div class="field">
+              <label for="hour">시</label>
+              <select id="hour" required></select>
+            </div>
+            <div class="field">
+              <label for="minute">분</label>
+              <select id="minute" required></select>
+            </div>
+            <div class="field span-2">
+              <label>성별</label>
+              <div class="choices">
+                <label><input type="radio" name="gender" value="male" checked /> 남성</label>
+                <label><input type="radio" name="gender" value="female" /> 여성</label>
+              </div>
+            </div>
+            <div class="field span-2">
+              <label>시간</label>
+              <div class="choices">
+                <label><input type="checkbox" id="timeUnknown" /> 태어난 시간을 모름 (세 기둥만)</label>
+              </div>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="primary" type="submit">사주 보기</button>
+            <button class="ghost" type="button" id="reset">지우기</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel" id="result">
+        <h2 class="section-title">명식</h2>
+        <div class="pillars" id="pillars"></div>
+        <h3 class="section-title">오행</h3>
+        <div class="bars" id="elements"></div>
+        <h3 class="section-title">대운</h3>
+        <div class="luck" id="luck"></div>
+        <p class="note" id="lichun"></p>
+        <h3 class="section-title">읽기</h3>
+        <p class="reading" id="reading"></p>
+        <p class="disclaimer">
+          입춘 기준 연주, 절기 기준 월주, 율리우스일 기준 일주, 자시(23시)부터 다음 날 일주를 씁니다. 진태양시·서머타임·해외 출생은 반영하지 않습니다. 재미와 참고용이며 전문 명리 상담을 대체하지 않습니다.
+        </p>
+      </section>
+
+      <footer class="foot">© kswany · 계산은 방문자의 브라우저에서만 실행됩니다</footer>
+    </div>
+    <script src="saju.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
