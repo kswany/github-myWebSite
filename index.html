@@ -22,6 +22,7 @@
           <a href="./" aria-current="page">홈</a>
           <a href="saju/">사주</a>
           <a href="games/">게임</a>
+          <a href="#guestbook">방명록</a>
         </nav>
       </header>
 
@@ -29,7 +30,7 @@
         <div class="seal">PERSONAL LAB</div>
         <h1>만들어 보고,<br />바로 열어 보는 자리</h1>
         <p class="lede">
-          웹에서 돌아가는 작은 실험들을 모아 둡니다. 사주, 게임, 도구를 하나씩 올려 두고 실제로 써 봅니다. 방문자가 페이지를 여는 동안 서버나 AI를 부르지 않습니다.
+          웹에서 돌아가는 작은 실험들을 모아 둡니다. 사주, 게임, 도구는 브라우저에서만 계산합니다. 접속 수와 방명록만 공개 기록에 남기고, IP는 저장하지 않습니다.
         </p>
       </section>
 
@@ -48,7 +49,47 @@
         </a>
       </section>
 
-      <footer class="foot">© kswany · GitHub Pages · 정적 사이트</footer>
+      <section class="lab-board" id="lab-home">
+        <div class="stats-row">
+          <div class="stat">
+            <div class="kicker">오늘</div>
+            <strong id="stat-today">…</strong>
+            <span>접속</span>
+          </div>
+          <div class="stat">
+            <div class="kicker">전체</div>
+            <strong id="stat-total">…</strong>
+            <span>접속</span>
+          </div>
+        </div>
+
+        <div class="lab-split">
+          <div class="panel" id="guestbook">
+            <h2 class="section-title">방명록</h2>
+            <p class="note">
+              로그인 없이 남깁니다. 지금 닉네임은 <strong id="guest-nick">…</strong> 입니다.
+            </p>
+            <form class="guest-form" id="guest-form">
+              <label class="sr-only" for="guest-text">방명록 내용</label>
+              <textarea id="guest-text" maxlength="200" rows="4" placeholder="다녀간 흔적을 한 줄 남겨 주세요."></textarea>
+              <div class="actions">
+                <button class="primary" type="submit">남기기</button>
+                <span class="guest-status" id="guest-status"></span>
+              </div>
+            </form>
+            <ol class="guest-list" id="guest-list"></ol>
+          </div>
+
+          <div class="panel" id="visits">
+            <h2 class="section-title">방문 기록</h2>
+            <p class="note">탭을 처음 열 때 한 번 셉니다. 시각, 페이지, 임시 닉만 공개됩니다.</p>
+            <ol class="visit-list" id="visit-list"></ol>
+          </div>
+        </div>
+      </section>
+
+      <footer class="foot">© kswany · GitHub Pages · 접속 수와 방명록은 공개 기록입니다</footer>
     </div>
+    <script src="js/lab.js" defer></script>
   </body>
 </html>
