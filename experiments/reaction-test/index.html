@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>반응속도 테스트 — kswany</title>
+    <meta name="description" content="화면이 초록색으로 바뀌면 바로 클릭해 반응 시간을 재어 봅니다. 브라우저에서만 실행됩니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="reaction.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>실험실</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../food-worldcup/">음식 월드컵</a>
+          <a href="./" aria-current="page">반응속도</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">REACTION</div>
+        <h1>반응속도 테스트</h1>
+        <p>초록색이 되면 바로 누르세요. 너무 일찍 누르면 실패입니다. 기록은 이 브라우저에만 남습니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="hud">
+          <span>최고 <strong id="stat-best">-</strong></span>
+          <span>최근 평균 <strong id="stat-avg">-</strong></span>
+          <span>시도 <strong id="stat-count">0</strong>회</span>
+        </div>
+
+        <button class="reaction-pad" type="button" id="pad" aria-live="polite">
+          <span class="pad-kicker" id="pad-kicker">준비</span>
+          <span class="pad-main" id="pad-main">시작하기</span>
+          <span class="pad-sub" id="pad-sub">아래 버튼을 눌러 첫 시도를 시작하세요</span>
+        </button>
+
+        <div class="actions">
+          <button class="ghost" type="button" id="reset">기록 지우기</button>
+        </div>
+      </section>
+
+      <footer class="foot">© kswany · 반응 시간은 방문자의 브라우저에서만 측정됩니다</footer>
+    </div>
+    <script src="reaction.js"></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>
