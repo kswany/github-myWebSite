@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>반응속도 테스트 — kswany</title>
+    <meta name="description" content="초록색 신호가 뜨면 클릭해 반응 시간을 밀리초로 재는 작은 테스트. 브라우저에서만 실행됩니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="reaction.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>실험실</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../food-worldcup/">음식 월드컵</a>
+          <a href="./" aria-current="page">반응속도</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">REFLEX</div>
+        <h1>반응속도 테스트</h1>
+        <p>화면이 초록색으로 바뀌면 최대한 빨리 누르세요. 반응 시간은 밀리초(ms)로 보여 주고, 최근 20번 기록은 이 브라우저에만 남습니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="score-grid">
+          <div class="score-box">
+            <span class="label">방금</span>
+            <strong id="stat-last">-</strong>
+          </div>
+          <div class="score-box">
+            <span class="label">최고</span>
+            <strong id="stat-best">-</strong>
+          </div>
+          <div class="score-box">
+            <span class="label">평균</span>
+            <strong id="stat-avg">-</strong>
+          </div>
+        </div>
+
+        <div class="reaction-zone idle" id="reaction-zone" tabindex="0" role="button">
+          <p class="zone-label" id="zone-label">시작하려면 누르세요</p>
+          <p class="zone-hint" id="zone-hint">초록색이 되면 바로 눌러 반응 시간을 재요.</p>
+        </div>
+
+        <div class="actions">
+          <button class="ghost" type="button" id="restart">처음으로</button>
+        </div>
+
+        <h2 class="section-title">최근 기록</h2>
+        <ol class="record-list" id="record-list"></ol>
+      </section>
+
+      <footer class="foot">© kswany · 기록은 방문자의 브라우저에만 저장됩니다</footer>
+    </div>
+    <script src="reaction.js"></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>
