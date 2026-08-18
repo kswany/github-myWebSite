@@ -152,8 +152,10 @@ function render() {
     btn.dataset.index = String(index);
     btn.setAttribute("aria-label", "카드 뒤집기");
     btn.innerHTML = `
-      <span class="face back"></span>
-      <span class="face front">${card.svg}</span>
+      <span class="tile-inner">
+        <span class="face back"></span>
+        <span class="face front">${card.svg}</span>
+      </span>
     `;
     card.el = btn;
     btn.addEventListener("click", onTile);

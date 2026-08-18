@@ -1,27 +1,31 @@
 ---
-description: 한국판 neal.fun 사이트 결 — 홈 카드, 밝은 한지, 방명록 분리
+description: K-Neal.fun 글로벌 디자인 시스템 — 오프화이트, Pretendard, 떠오르는 카드
 alwaysApply: true
 ---
 
-# 한국판 neal.fun
+# K-Neal.fun 디자인
 
-이 사이트는 https://neal.fun/ 을 **베끼지 않고** 한국어로 오마주한다. 영어를 잘 못 읽는 사람이 바로 만지게 하는 것이 목표다.
+한국판 neal.fun. 클릭하고 싶게, 촌스러운 얇은 테두리 없이.
+
+이 레포는 GitHub Pages **정적 HTML/CSS/JS**다. React·Tailwind·lucide-react·Framer Motion은 쓰지 말고, 같은 결을 `css/site.css`로 맞춘다.
+
+## 필수
+
+- 폰트: Pretendard. 제목 `800/700`, 본문 `#475569`
+- 배경: `#F9FAFB`. 순백 페이지 배경 금지
+- 카드: 흰 면, `rounded-3xl`(24px), `shadow-sm`. 호버 `-translate-y-1` + `shadow-xl`, 0.3s
+- 버튼: 빵빵한 패딩, `rounded-full`, `active:scale-95`
+- 아이콘: Lucide 스타일 SVG. 이모지만 쓰지 말 것
+- 사진이 필요한 선택지는 Unsplash `object-cover` + `bg-black/40` 오버레이
 
 ## 화면
 
-- 홈은 짧은 제목 + 카드 그리드. 방명록·방문 기록 보드를 홈에 다시 두지 않는다.
-- 접속 건수는 홈 아래 `오늘 n · 전체 n` 한 줄만.
-- 방명록은 `guestbook/` 페이지. 메뉴는 `홈 / 사주 / 게임 / 실험 / 방명록`만.
-- 새 기능 이름을 메뉴에 추가하지 않는다. 입구는 홈 카드다.
+- 홈 그리드: PC 3~4열, 모바일 1열. 방명록은 `guestbook/`
+- 월드컵: `aspect-[4/3]` 실사 카드
+- 짝맞추기: 3D `rotateY` 플립, 뒷면 `slate-800`
 
-## 디자인
+## 금지
 
-- 밝은 한지 배경(`css/site.css`). 어두운 테마로 되돌리지 않는다.
-- 카드는 흰 면 + 얇은 테두리 + 짧은 한국어. 가능하면 `.card-visual` SVG.
-- 제목은 Gowun Batang. neal.fun 로고·얼굴·이름·에셋을 복사하지 않는다.
-
-## 만들 때
-
-- HTML/CSS/JS만. 한 아이디어를 한 페이지에, 로그인 없이 바로 조작.
-- 기능을 만들면 루트 `index.html` `.grid`와 `experiments/index.html`에 카드를 넣는다.
-- Infinite Craft / Sandboxels / Internet Roadtrip / Password Game 통째 복제는 금지.
+- 얇은 `border`로 카드 그리기
+- Gowun Batang·한지·먹색 테마로 되돌리기
+- React/Tailwind 신규 페이지, neal.fun 베끼기, 홈에 방명록 보드
