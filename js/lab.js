@@ -89,6 +89,7 @@
   function pageLabel(pathname) {
     if (pathname.indexOf("/saju") !== -1) return "사주";
     if (pathname.indexOf("/games") !== -1) return "게임";
+    if (pathname.indexOf("/guestbook") !== -1) return "방명록";
     if (pathname.indexOf("/reaction-test") !== -1) return "반응속도";
     if (pathname.indexOf("/food-worldcup") !== -1) return "음식 월드컵";
     if (pathname.indexOf("/experiments") !== -1) return "실험";
@@ -256,7 +257,7 @@
     renderGuestbook(guest && guest.items ? guest.items : []);
   }
 
-  function mountHome() {
+  function mountGuestbook() {
     setText("guest-nick", nick());
     var form = document.getElementById("guest-form");
     var field = document.getElementById("guest-text");
@@ -311,11 +312,12 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    var isHome = Boolean(document.getElementById("lab-home"));
-    if (isHome) mountHome();
+    var hasGuestbook = Boolean(document.getElementById("guest-form"));
+    var hasLists = Boolean(document.getElementById("guest-list") || document.getElementById("visit-list"));
+    if (hasGuestbook) mountGuestbook();
     ping()
       .then(function () {
-        if (isHome) return refreshLists();
+        if (hasLists) return refreshLists();
       })
       .catch(function () {
         setText("stat-today", "—");

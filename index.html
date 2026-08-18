@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>kswany — 개인 실험실</title>
-    <meta name="description" content="게임과 사주를 올려 두는 kswany의 개인 웹사이트" />
+    <title>kswany — 게임과 실험</title>
+    <meta name="description" content="한국어로 바로 만지는 작은 게임과 실험. 사주, 월드컵, 반응속도." />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,96 +13,74 @@
   </head>
   <body>
     <div class="wrap">
-      <header class="topbar">
-        <a class="brand" href="./">
-          <strong>kswany</strong>
-          <span>실험실</span>
-        </a>
+      <header class="hero">
+        <p class="brand-mark"><a href="./">kswany</a></p>
+        <p class="tag">한국어로 바로 만지는 게임과 실험</p>
         <nav class="nav">
           <a href="./" aria-current="page">홈</a>
           <a href="saju/">사주</a>
           <a href="games/">게임</a>
           <a href="experiments/">실험</a>
-          <a href="#guestbook">방명록</a>
+          <a href="guestbook/">방명록</a>
         </nav>
       </header>
 
-      <section class="hero">
-        <div class="seal">PERSONAL LAB</div>
-        <h1>만들어 보고,<br />바로 열어 보는 자리</h1>
-        <p class="lede">
-          웹에서 돌아가는 작은 실험들을 모아 둡니다. 사주, 게임, 도구는 브라우저에서만 계산합니다. 접속 수와 방명록만 공개 기록에 남기고, IP는 저장하지 않습니다.
-        </p>
-      </section>
-
       <!-- 매일 자동화: 새 기능을 만들었으면 이 그리드에 카드를 반드시 추가한다. 홈 카드 없는 PR은 금지. -->
       <section class="grid" id="experiments">
-        <a class="card" href="saju/">
-          <div class="kicker">만세력 · 사주팔자</div>
+        <a class="card" href="saju/" data-tone="cinnabar">
+          <div class="card-visual" aria-hidden="true">
+            <svg viewBox="0 0 72 72" fill="none" stroke="#c45c3a" stroke-width="2">
+              <rect x="8" y="14" width="12" height="44" rx="2" />
+              <rect x="24" y="14" width="12" height="44" rx="2" />
+              <rect x="40" y="14" width="12" height="44" rx="2" />
+              <rect x="56" y="14" width="12" height="44" rx="2" />
+            </svg>
+          </div>
+          <div class="kicker">만세력</div>
           <h2>사주 보기</h2>
-          <p>생년월일시로 네 기둥, 오행, 십성, 대운을 브라우저에서 계산합니다. 재미와 참고용입니다.</p>
-          <span class="go">열기 →</span>
+          <p>생년월일로 네 기둥을 바로 봅니다.</p>
         </a>
-        <a class="card" href="games/">
-          <div class="kicker">기억 · 그림</div>
+        <a class="card" href="games/" data-tone="moss">
+          <div class="card-visual" aria-hidden="true">
+            <svg viewBox="0 0 72 72" fill="none" stroke="#5d6e54" stroke-width="2">
+              <rect x="10" y="10" width="22" height="22" rx="4" />
+              <rect x="40" y="10" width="22" height="22" rx="4" />
+              <rect x="10" y="40" width="22" height="22" rx="4" />
+              <rect x="40" y="40" width="22" height="22" rx="4" fill="#5d6e54" fill-opacity=".15" />
+            </svg>
+          </div>
+          <div class="kicker">기억</div>
           <h2>그림 짝맞추기</h2>
-          <p>같은 그림 두 장을 찾는 카드 게임입니다. 한자 없이 그림만 맞추면 됩니다.</p>
-          <span class="go">플레이 →</span>
+          <p>같은 그림 두 장을 찾으면 됩니다.</p>
         </a>
-        <a class="card" href="experiments/food-worldcup/">
-          <div class="kicker">선택 · 월드컵</div>
+        <a class="card" href="experiments/food-worldcup/" data-tone="gold">
+          <div class="card-visual" aria-hidden="true">
+            <svg viewBox="0 0 72 72" fill="none" stroke="#c4a04a" stroke-width="2">
+              <path d="M16 40c3 14 12 20 20 20s17-6 20-20" />
+              <path d="M18 40h36" />
+              <path d="M24 32c5-8 9-6 12 0 5-8 9-6 12 0" />
+            </svg>
+          </div>
+          <div class="kicker">월드컵</div>
           <h2>음식 월드컵</h2>
-          <p>두 음식 중 더 끌리는 쪽을 고르다 보면 오늘의 우승 메뉴가 나옵니다.</p>
-          <span class="go">플레이 →</span>
+          <p>둘 중 더 끌리는 쪽을 고르면 우승이 나옵니다.</p>
         </a>
-        <a class="card" href="experiments/reaction-test/">
-          <div class="kicker">반사 · 시간</div>
-          <h2>반응속도 테스트</h2>
-          <p>초록색이 되면 바로 누르세요. 반응 시간을 밀리초로 보여 줍니다.</p>
-          <span class="go">플레이 →</span>
+        <a class="card" href="experiments/reaction-test/" data-tone="green">
+          <div class="card-visual" aria-hidden="true">
+            <svg viewBox="0 0 72 72" fill="none">
+              <rect x="14" y="14" width="44" height="44" rx="8" fill="#3d8b5a" />
+            </svg>
+          </div>
+          <div class="kicker">반사</div>
+          <h2>반응속도</h2>
+          <p>초록이 되면 바로 누르세요.</p>
         </a>
       </section>
 
-      <section class="lab-board" id="lab-home">
-        <div class="stats-row">
-          <div class="stat">
-            <div class="kicker">오늘</div>
-            <strong id="stat-today">…</strong>
-            <span>접속</span>
-          </div>
-          <div class="stat">
-            <div class="kicker">전체</div>
-            <strong id="stat-total">…</strong>
-            <span>접속</span>
-          </div>
-        </div>
-
-        <div class="lab-split">
-          <div class="panel" id="guestbook">
-            <h2 class="section-title">방명록</h2>
-            <p class="note">
-              로그인 없이 남깁니다. 지금 닉네임은 <strong id="guest-nick">…</strong> 입니다.
-            </p>
-            <form class="guest-form" id="guest-form">
-              <label class="sr-only" for="guest-text">방명록 내용</label>
-              <textarea id="guest-text" maxlength="200" rows="4" placeholder="다녀간 흔적을 한 줄 남겨 주세요."></textarea>
-              <div class="actions">
-                <button class="primary" type="submit">남기기</button>
-                <span class="guest-status" id="guest-status"></span>
-              </div>
-            </form>
-            <ol class="guest-list" id="guest-list"></ol>
-          </div>
-
-          <div class="panel" id="visits">
-            <h2 class="section-title">방문 기록</h2>
-            <p class="note">탭을 처음 열 때 한 번 셉니다. 시각, 페이지, 임시 닉만 공개됩니다.</p>
-            <ol class="visit-list" id="visit-list"></ol>
-          </div>
-        </div>
-      </section>
-
-      <footer class="foot">© kswany · GitHub Pages · 접속 수와 방명록은 공개 기록입니다</footer>
+      <p class="tiny-stats">
+        오늘 <strong id="stat-today">…</strong> · 전체 <strong id="stat-total">…</strong>
+      </p>
+      <footer class="foot">© kswany</footer>
     </div>
     <script src="js/lab.js" defer></script>
   </body>

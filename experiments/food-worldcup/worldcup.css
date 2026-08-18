@@ -20,8 +20,8 @@
   gap: 10px;
   min-height: 240px;
   padding: 22px 16px 18px;
-  color: var(--paper);
-  background: #1b1612;
+  color: var(--ink);
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   cursor: pointer;
@@ -32,7 +32,7 @@
 .food-btn:focus-visible {
   transform: translateY(-3px);
   border-color: rgba(196, 92, 58, 0.55);
-  background: #221c17;
+  background: #fff;
 }
 
 .food-btn:focus-visible {
@@ -60,7 +60,7 @@
 
 .food-btn .hint {
   margin: 0;
-  color: var(--paper-dim);
+  color: var(--ink-soft);
   font-size: 0.9rem;
 }
 

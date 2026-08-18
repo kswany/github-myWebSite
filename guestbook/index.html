@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>방명록 — kswany</title>
+    <meta name="description" content="로그인 없이 남기는 짧은 방명록. IP는 저장하지 않습니다." />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/site.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../">홈</a>
+          <a href="../saju/">사주</a>
+          <a href="../games/">게임</a>
+          <a href="../experiments/">실험</a>
+          <a href="./" aria-current="page">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <h1>방명록</h1>
+        <p>
+          로그인 없이 한 줄 남깁니다. 지금 닉네임은 <strong id="guest-nick">…</strong> 입니다. IP는 저장하지 않습니다.
+        </p>
+      </section>
+
+      <section class="panel">
+        <form class="guest-form" id="guest-form">
+          <label class="sr-only" for="guest-text">방명록 내용</label>
+          <textarea id="guest-text" maxlength="200" rows="4" placeholder="다녀간 흔적을 한 줄 남겨 주세요."></textarea>
+          <div class="actions">
+            <button class="primary" type="submit">남기기</button>
+            <span class="guest-status" id="guest-status"></span>
+          </div>
+        </form>
+        <ol class="guest-list" id="guest-list"></ol>
+
+        <div class="visits-compact">
+          <h2 class="section-title">최근 방문</h2>
+          <p class="note">탭을 처음 열 때 한 번 셉니다. 시각, 페이지, 임시 닉만 공개됩니다.</p>
+          <ol class="visit-list" id="visit-list"></ol>
+        </div>
+      </section>
+
+      <footer class="foot">© kswany</footer>
+    </div>
+    <script src="../js/lab.js" defer></script>
+  </body>
+</html>

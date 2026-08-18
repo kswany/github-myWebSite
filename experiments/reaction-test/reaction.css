@@ -5,7 +5,7 @@
   margin: 8px 0 18px;
   padding: 28px 20px;
   border-radius: 16px;
-  border: 2px solid rgba(243, 234, 216, 0.14);
+  border: 2px solid var(--line);
   cursor: pointer;
   user-select: none;
   transition: background 0.12s ease, border-color 0.12s ease;
@@ -26,12 +26,12 @@
 
 .reaction-zone .zone-hint {
   margin: 10px 0 0;
-  color: var(--paper-dim);
+  color: var(--ink-soft);
   font-size: 0.92rem;
 }
 
 .reaction-zone.idle {
-  background: rgba(20, 17, 14, 0.55);
+  background: #efe8da;
 }
 
 .reaction-zone.waiting {
@@ -58,7 +58,7 @@
 }
 
 .reaction-zone.result {
-  background: rgba(36, 28, 22, 0.92);
+  background: #fff8f3;
 }
 
 .reaction-zone.result .zone-label {
@@ -76,7 +76,7 @@
 .score-box {
   padding: 14px 12px;
   text-align: center;
-  background: #1b1612;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 12px;
 }
@@ -108,7 +108,7 @@
   padding: 10px 0;
   border-top: 1px solid var(--line);
   font-size: 0.92rem;
-  color: var(--paper-dim);
+  color: var(--ink-soft);
 }
 
 .record-list li:first-child {
@@ -116,7 +116,7 @@
 }
 
 .record-list .ms {
-  color: var(--paper);
+  color: var(--ink);
   font-weight: 500;
 }
 

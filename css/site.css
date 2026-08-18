@@ -1,15 +1,15 @@
 :root {
-  --ink: #14110e;
-  --ink-soft: #241c16;
-  --paper: #f3ead8;
-  --paper-dim: #e4d6bc;
+  --ink: #1c1814;
+  --ink-soft: #3a322b;
+  --paper: #f7f3ea;
+  --card: #fffdf8;
   --cinnabar: #c45c3a;
   --cinnabar-deep: #9a3d28;
-  --gold: #c4a574;
-  --moss: #6d7f62;
-  --mute: #8a7b68;
-  --line: rgba(243, 234, 216, 0.12);
-  --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  --gold: #8d7044;
+  --moss: #5d6e54;
+  --mute: #8a8074;
+  --line: rgba(28, 24, 20, 0.12);
+  --shadow: 0 8px 24px rgba(28, 24, 20, 0.06);
 }
 
 * {
@@ -23,23 +23,10 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  color: var(--paper);
-  background:
-    radial-gradient(1200px 600px at 10% -10%, rgba(196, 92, 58, 0.16), transparent 50%),
-    radial-gradient(900px 500px at 100% 0%, rgba(109, 127, 98, 0.12), transparent 45%),
-    var(--ink);
+  color: var(--ink);
+  background: var(--paper);
   font-family: "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
   line-height: 1.6;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.07;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-  z-index: 0;
 }
 
 a {
@@ -48,9 +35,7 @@ a {
 }
 
 .wrap {
-  position: relative;
-  z-index: 1;
-  width: min(1080px, calc(100% - 32px));
+  width: min(980px, calc(100% - 36px));
   margin: 0 auto;
 }
 
@@ -58,24 +43,24 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 22px 0 8px;
+  gap: 16px;
+  padding: 20px 0 8px;
 }
 
 .brand {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  gap: 8px;
   font-family: "Gowun Batang", serif;
-  letter-spacing: 0.08em;
 }
 
 .brand strong {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 700;
 }
 
 .brand span {
-  color: var(--gold);
+  color: var(--mute);
   font-size: 0.82rem;
 }
 
@@ -83,9 +68,9 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 10px 18px;
-  color: var(--paper-dim);
-  font-size: 0.92rem;
+  gap: 8px 16px;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
 }
 
 .nav a:hover,
@@ -94,119 +79,173 @@ a {
 }
 
 .hero {
-  padding: 56px 0 36px;
+  padding: 36px 0 28px;
+  text-align: center;
+}
+
+.hero .brand-mark {
+  margin: 0;
+  font-family: "Gowun Batang", serif;
+  font-size: clamp(2.4rem, 7vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.hero .brand-mark a:hover {
+  color: var(--cinnabar);
+}
+
+.hero .tag {
+  margin: 10px 0 18px;
+  color: var(--mute);
+  font-size: 1rem;
+}
+
+.hero .nav {
+  justify-content: center;
 }
 
 .seal {
   display: inline-block;
-  border: 1.5px solid var(--cinnabar);
   color: var(--cinnabar);
-  padding: 3px 10px 2px;
   font-family: "Gowun Batang", serif;
   font-size: 0.78rem;
-  letter-spacing: 0.28em;
-  margin-bottom: 18px;
+  letter-spacing: 0.22em;
+  margin-bottom: 10px;
 }
 
 .hero h1 {
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   font-family: "Gowun Batang", serif;
-  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.03em;
 }
 
 .hero p.lede {
-  max-width: 38rem;
-  margin: 0;
-  color: var(--paper-dim);
-  font-size: 1.05rem;
+  max-width: 34rem;
+  margin: 0 auto;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
-  padding-bottom: 80px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  padding-bottom: 28px;
 }
 
 .card {
-  display: block;
-  padding: 26px 24px 22px;
-  background: linear-gradient(180deg, rgba(36, 28, 22, 0.92), rgba(20, 17, 14, 0.92));
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-  transition: transform 0.18s ease, border-color 0.18s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 18px 18px 16px;
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: none;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.card:has(.card-visual) {
+  min-height: 220px;
 }
 
 .card:hover {
   transform: translateY(-3px);
-  border-color: rgba(196, 92, 58, 0.45);
+  box-shadow: var(--shadow);
 }
 
-.card.soon {
-  opacity: 0.72;
+.card[data-tone="cinnabar"] { border-color: var(--cinnabar); }
+.card[data-tone="moss"] { border-color: var(--moss); }
+.card[data-tone="gold"] { border-color: #c4a04a; }
+.card[data-tone="green"] { border-color: #3d8b5a; }
+.card[data-tone="ink"] { border-color: var(--ink); }
+
+.card-visual {
+  display: grid;
+  place-items: center;
+  height: 88px;
+  margin-bottom: 8px;
+  pointer-events: none;
+}
+
+.card-visual svg {
+  width: 72px;
+  height: 72px;
 }
 
 .card .kicker {
   color: var(--gold);
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
 }
 
 .card h2 {
-  margin: 8px 0 8px;
+  margin: 0 0 6px;
   font-family: "Gowun Batang", serif;
-  font-size: 1.55rem;
+  font-size: 1.4rem;
 }
 
 .card p {
   margin: 0;
-  color: var(--paper-dim);
-  font-size: 0.95rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
 }
 
 .card .go {
   display: inline-block;
-  margin-top: 16px;
+  margin-top: auto;
+  padding-top: 14px;
   color: var(--cinnabar);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
 }
 
-.foot {
-  padding: 8px 0 36px;
+.tiny-stats {
+  margin: 0;
+  padding: 8px 0 28px;
+  text-align: center;
   color: var(--mute);
   font-size: 0.82rem;
 }
 
+.tiny-stats strong {
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.foot {
+  padding: 4px 0 36px;
+  color: var(--mute);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
 .page-head {
-  padding: 28px 0 8px;
+  padding: 24px 0 8px;
 }
 
 .page-head h1 {
   margin: 0 0 8px;
   font-family: "Gowun Batang", serif;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
 }
 
 .page-head p {
   margin: 0;
-  color: var(--paper-dim);
+  color: var(--ink-soft);
   max-width: 40rem;
 }
 
 .panel {
-  margin: 28px 0 48px;
-  padding: 24px;
-  background: rgba(36, 28, 22, 0.78);
+  margin: 22px 0 40px;
+  padding: 22px;
+  background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 18px;
-}
-
-.lab-split .panel {
-  margin: 0;
+  border-radius: 16px;
 }
 
 .panel > .section-title:first-child {
@@ -252,9 +291,9 @@ select,
 textarea {
   width: 100%;
   padding: 11px 12px;
-  color: var(--paper);
-  background: var(--ink);
-  border: 1px solid rgba(243, 234, 216, 0.16);
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
   border-radius: 10px;
 }
 
@@ -267,7 +306,7 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-  outline: 2px solid rgba(196, 92, 58, 0.45);
+  outline: 2px solid rgba(196, 92, 58, 0.4);
   outline-offset: 1px;
 }
 
@@ -294,9 +333,9 @@ textarea:focus {
   align-items: center;
   gap: 6px;
   padding: 8px 12px;
-  color: var(--paper);
-  background: var(--ink);
-  border: 1px solid rgba(243, 234, 216, 0.14);
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
   border-radius: 999px;
   cursor: pointer;
 }
@@ -321,15 +360,15 @@ button.ghost {
 }
 
 button.primary {
-  color: var(--paper);
+  color: #fff;
   background: var(--cinnabar-deep);
   border-color: var(--cinnabar);
 }
 
 button.ghost {
-  color: var(--paper-dim);
+  color: var(--ink-soft);
   background: transparent;
-  border-color: rgba(243, 234, 216, 0.18);
+  border-color: var(--line);
 }
 
 #result {
@@ -350,7 +389,7 @@ button.ghost {
 .pillar {
   text-align: center;
   padding: 16px 8px 14px;
-  background: #1b1612;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 14px;
 }
@@ -369,7 +408,7 @@ button.ghost {
 }
 
 .pillar .han .stem {
-  color: var(--paper);
+  color: var(--ink);
 }
 
 .pillar .han .branch {
@@ -378,7 +417,7 @@ button.ghost {
 
 .pillar .meta {
   font-size: 0.78rem;
-  color: var(--paper-dim);
+  color: var(--ink-soft);
 }
 
 .bars {
@@ -397,7 +436,7 @@ button.ghost {
 
 .bar-track {
   height: 8px;
-  background: rgba(243, 234, 216, 0.08);
+  background: rgba(28, 24, 20, 0.08);
   border-radius: 99px;
   overflow: hidden;
 }
@@ -410,7 +449,7 @@ button.ghost {
 .bar-fill.wood { background: #6d7f62; }
 .bar-fill.fire { background: #c45c3a; }
 .bar-fill.earth { background: #c4a574; }
-.bar-fill.metal { background: #d7d0c4; }
+.bar-fill.metal { background: #b8b0a4; }
 .bar-fill.water { background: #6e8ea8; }
 
 .luck {
@@ -437,7 +476,7 @@ button.ghost {
 
 .note,
 .reading {
-  color: var(--paper-dim);
+  color: var(--ink-soft);
   font-size: 0.95rem;
 }
 
@@ -446,7 +485,7 @@ button.ghost {
   margin: 22px 0 8px;
   font-family: "Gowun Batang", serif;
   font-size: 1.2rem;
-  color: var(--paper);
+  color: var(--ink);
 }
 
 .disclaimer {
@@ -462,12 +501,12 @@ button.ghost {
   flex-wrap: wrap;
   gap: 12px 18px;
   margin-bottom: 16px;
-  color: var(--paper-dim);
+  color: var(--ink-soft);
   font-size: 0.92rem;
 }
 
 .hud strong {
-  color: var(--paper);
+  color: var(--ink);
 }
 
 .board {
@@ -499,7 +538,7 @@ button.ghost {
 .tile .back {
   background:
     repeating-linear-gradient(-45deg, rgba(196, 92, 58, 0.14) 0 7px, transparent 7px 14px),
-    #1b1612;
+    #2a221c;
 }
 
 .tile .back::after {
@@ -512,7 +551,7 @@ button.ghost {
 
 .tile .front {
   display: none;
-  background: #f3ead8;
+  background: #fffdf8;
   color: #3a2a22;
   padding: 14%;
 }
@@ -543,56 +582,11 @@ button.ghost {
   padding: 18px;
   border: 1px solid rgba(196, 92, 58, 0.35);
   border-radius: 14px;
-  background: rgba(20, 17, 14, 0.9);
+  background: #fff8f3;
 }
 
 .overlay.show {
   display: block;
-}
-
-.lab-board {
-  padding-bottom: 48px;
-}
-
-.stats-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin-bottom: 18px;
-}
-
-.stat {
-  padding: 22px 24px 18px;
-  background: linear-gradient(180deg, rgba(36, 28, 22, 0.92), rgba(20, 17, 14, 0.92));
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-}
-
-.stat .kicker {
-  color: var(--gold);
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
-}
-
-.stat strong {
-  display: block;
-  margin: 6px 0 2px;
-  font-family: "Gowun Batang", serif;
-  font-size: clamp(2rem, 5vw, 2.8rem);
-  line-height: 1.1;
-}
-
-.stat span {
-  color: var(--mute);
-  font-size: 0.88rem;
-}
-
-.lab-split {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 18px;
-  align-items: start;
 }
 
 .guest-form {
@@ -640,7 +634,7 @@ button.ghost {
 
 .guest-list p {
   margin: 0;
-  color: var(--paper-dim);
+  color: var(--ink-soft);
   white-space: pre-wrap;
   word-break: break-word;
 }
@@ -658,12 +652,23 @@ button.ghost {
 }
 
 .visit-list .lab-who {
-  color: var(--paper-dim);
+  color: var(--ink-soft);
 }
 
 .lab-empty {
   color: var(--mute);
   border-top: 0 !important;
+}
+
+.visits-compact {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.visits-compact .section-title {
+  margin-top: 0;
+  font-size: 1rem;
 }
 
 @media (max-width: 720px) {
@@ -684,13 +689,17 @@ button.ghost {
     gap: 8px;
   }
 
-  .lab-split,
-  .stats-row {
-    grid-template-columns: 1fr;
-  }
-
   .visit-list li {
     grid-template-columns: 1fr;
     gap: 2px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav {
+    justify-content: flex-start;
   }
 }
