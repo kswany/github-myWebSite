@@ -89,6 +89,9 @@
   function pageLabel(pathname) {
     if (pathname.indexOf("/saju") !== -1) return "사주";
     if (pathname.indexOf("/games") !== -1) return "게임";
+    if (pathname.indexOf("/reaction-test") !== -1) return "반응속도";
+    if (pathname.indexOf("/food-worldcup") !== -1) return "음식 월드컵";
+    if (pathname.indexOf("/experiments") !== -1) return "실험";
     return "홈";
   }
 

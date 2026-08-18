@@ -1,0 +1,131 @@
+.reaction-zone {
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+  margin: 8px 0 18px;
+  padding: 28px 20px;
+  border-radius: 16px;
+  border: 2px solid rgba(243, 234, 216, 0.14);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.12s ease, border-color 0.12s ease;
+  text-align: center;
+}
+
+.reaction-zone:focus-visible {
+  outline: 2px solid rgba(196, 92, 58, 0.55);
+  outline-offset: 3px;
+}
+
+.reaction-zone .zone-label {
+  margin: 0;
+  font-family: "Gowun Batang", serif;
+  font-size: clamp(1.35rem, 4vw, 1.85rem);
+  line-height: 1.35;
+}
+
+.reaction-zone .zone-hint {
+  margin: 10px 0 0;
+  color: var(--paper-dim);
+  font-size: 0.92rem;
+}
+
+.reaction-zone.idle {
+  background: rgba(20, 17, 14, 0.55);
+}
+
+.reaction-zone.waiting {
+  background: rgba(154, 61, 40, 0.35);
+  border-color: rgba(196, 92, 58, 0.55);
+}
+
+.reaction-zone.waiting .zone-label {
+  color: #f0c4b8;
+}
+
+.reaction-zone.ready {
+  background: rgba(109, 127, 98, 0.55);
+  border-color: rgba(141, 168, 128, 0.75);
+}
+
+.reaction-zone.ready .zone-label {
+  color: #e8f2e4;
+}
+
+.reaction-zone.too-soon {
+  background: rgba(196, 92, 58, 0.28);
+  border-color: rgba(196, 92, 58, 0.65);
+}
+
+.reaction-zone.result {
+  background: rgba(36, 28, 22, 0.92);
+}
+
+.reaction-zone.result .zone-label {
+  color: var(--cinnabar);
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+}
+
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.score-box {
+  padding: 14px 12px;
+  text-align: center;
+  background: #1b1612;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.score-box .label {
+  display: block;
+  color: var(--gold);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+}
+
+.score-box strong {
+  display: block;
+  margin-top: 4px;
+  font-family: "Gowun Batang", serif;
+  font-size: 1.45rem;
+}
+
+.record-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.record-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.92rem;
+  color: var(--paper-dim);
+}
+
+.record-list li:first-child {
+  border-top: 0;
+}
+
+.record-list .ms {
+  color: var(--paper);
+  font-weight: 500;
+}
+
+.record-list .best-row .ms {
+  color: var(--cinnabar);
+}
+
+@media (max-width: 560px) {
+  .score-grid {
+    grid-template-columns: 1fr;
+  }
+}
