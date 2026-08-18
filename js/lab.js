@@ -14,6 +14,9 @@
   var VISIT_CAP = 50;
   var GUEST_CAP = 80;
   var MSG_MAX = 200;
+  var guestCache = [];
+  var posting = false;
+  var FETCH_MS = 10000;
   var ADJ = [
     "고요한",
     "붉은",
@@ -112,19 +115,34 @@
     }
   }
 
+  function fetchOk(url, options, ms) {
+    var ctrl = new AbortController();
+    var timer = setTimeout(function () {
+      ctrl.abort();
+    }, ms || FETCH_MS);
+    var opts = Object.assign({}, options || {}, { cache: "no-store", signal: ctrl.signal });
+    return fetch(url, opts).finally(function () {
+      clearTimeout(timer);
+    });
+  }
+
   async function read(path) {
-    var res = await fetch(BASE + "/" + path, { headers: HEADERS });
+    var res = await fetchOk(BASE + "/" + path, { headers: HEADERS });
     if (res.status === 404) return null;
     if (!res.ok) throw new Error("read-failed");
     return res.json();
   }
 
   async function write(path, body) {
-    var res = await fetch(BASE + "/" + path, {
-      method: "POST",
-      headers: HEADERS,
-      body: JSON.stringify(body),
-    });
+    var res = await fetchOk(
+      BASE + "/" + path,
+      {
+        method: "POST",
+        headers: HEADERS,
+        body: JSON.stringify(body),
+      },
+      12000
+    );
     if (!res.ok) throw new Error("write-failed");
   }
 
@@ -205,6 +223,7 @@
   }
 
   function renderGuestbook(items) {
+    guestCache = Array.isArray(items) ? items : [];
     var list = document.getElementById("guest-list");
     if (!list) return;
     list.replaceChildren();
@@ -239,7 +258,7 @@
     await bump(kstDate());
     markCounted();
     renderStats((await read("stats")) || { total: 0 });
-    await append(
+    var visits = await append(
       "visits",
       {
         at: kstStamp(),
@@ -248,13 +267,14 @@
       },
       VISIT_CAP
     );
+    renderVisits(visits);
   }
 
   async function refreshLists() {
     var visits = await read("visits");
     var guest = await read("guestbook");
     renderVisits(visits && visits.items ? visits.items : []);
-    renderGuestbook(guest && guest.items ? guest.items : []);
+    if (!posting) renderGuestbook(guest && guest.items ? guest.items : []);
   }
 
   function mountGuestbook() {
@@ -284,28 +304,28 @@
       }
 
       var btn = form.querySelector("button");
+      var row = { at: kstStamp(), nick: nick(), text: text };
+      posting = true;
+      renderGuestbook([row].concat(guestCache));
+      field.value = "";
       if (btn) btn.disabled = true;
       if (status) status.textContent = "남기는 중…";
 
-      append(
-        "guestbook",
-        { at: kstStamp(), nick: nick(), text: text },
-        GUEST_CAP
-      )
+      append("guestbook", row, GUEST_CAP)
         .then(function (items) {
           try {
             sessionStorage.setItem(LAST_POST_KEY, String(now));
           } catch (err) {
             /* ignore */
           }
-          field.value = "";
           renderGuestbook(items);
           if (status) status.textContent = "남겼습니다.";
         })
         .catch(function () {
-          if (status) status.textContent = "지금은 남기지 못했습니다. 잠시 후 다시 시도해 주세요.";
+          if (status) status.textContent = "저장이 늦습니다. 잠시 후 새로고침 해 보세요.";
         })
         .then(function () {
+          posting = false;
           if (btn) btn.disabled = false;
         });
     });
@@ -315,15 +335,21 @@
     var hasGuestbook = Boolean(document.getElementById("guest-form"));
     var hasLists = Boolean(document.getElementById("guest-list") || document.getElementById("visit-list"));
     if (hasGuestbook) mountGuestbook();
-    ping()
-      .then(function () {
-        if (hasLists) return refreshLists();
-      })
-      .catch(function () {
-        setText("stat-today", "—");
-        setText("stat-total", "—");
+    if (hasLists) {
+      renderGuestbook([]);
+      renderVisits([]);
+      var list = document.getElementById("guest-list");
+      if (list && !guestCache.length) {
+        list.replaceChildren(emptyLine("불러오는 중…"));
+      }
+      refreshLists().catch(function () {
         var status = document.getElementById("guest-status");
-        if (status) status.textContent = "기록을 불러오지 못했습니다.";
+        if (status && !status.textContent) status.textContent = "기록을 불러오지 못했습니다.";
       });
+    }
+    ping().catch(function () {
+      setText("stat-today", "—");
+      setText("stat-total", "—");
+    });
   });
 })();
