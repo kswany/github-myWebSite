@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>밸런스 게임 — kswany</title>
+    <meta name="description" content="둘 중 하나만 고르는 짧은 밸런스 게임. 여덟 문항을 고르면 내 취향 요약이 나옵니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="balance.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">BALANCE</div>
+        <h1>밸런스 게임</h1>
+        <p>둘 중 더 끌리는 쪽을 골라 보세요. 여덟 번 고르면 A·B 비율과 한 줄 요약이 나옵니다. 선택은 이 브라우저에만 남습니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="hud" id="hud">
+          <span>문항 <strong id="q-num">1</strong> / <strong>8</strong></span>
+          <span>지난번 <strong id="last-type">-</strong></span>
+        </div>
+
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <div id="quiz" class="quiz">
+          <h2 class="question" id="question">-</h2>
+          <div class="choices">
+            <button class="choice-btn" type="button" id="choice-a" aria-label="A 고르기">
+              <span class="choice-tag">A</span>
+              <span class="choice-label" id="label-a">-</span>
+            </button>
+            <p class="versus" aria-hidden="true">vs</p>
+            <button class="choice-btn" type="button" id="choice-b" aria-label="B 고르기">
+              <span class="choice-tag">B</span>
+              <span class="choice-label" id="label-b">-</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="overlay" id="result" hidden>
+          <p class="winner-kicker">내 밸런스</p>
+          <div class="result-bars" id="result-bars"></div>
+          <h2 class="section-title" id="result-title">-</h2>
+          <p class="reading" id="result-desc"></p>
+          <div class="actions" style="margin-top: 14px">
+            <button class="primary" type="button" id="again">다시 하기</button>
+          </div>
+        </div>
+
+        <div class="actions" style="margin-top: 16px">
+          <button class="ghost" type="button" id="restart">처음부터</button>
+        </div>
+      </section>
+
+      <footer class="foot">© kswany · 선택은 방문자의 브라우저에서만 이뤄집니다</footer>
+    </div>
+    <script src="balance.js"></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>
