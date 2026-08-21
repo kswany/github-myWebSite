@@ -1,0 +1,5 @@
+이 페이지의 게임 빌드는 MIT 라이선스의 Godot 4 학습용 클론입니다.
+
+원본: https://github.com/migalvalm/vampire-survivors-clone
+저작: migalvalm (Miguel Almeida Games)
+공식 Vampire Survivors가 아니며, 이름·캐릭터·상표와 무관합니다.
