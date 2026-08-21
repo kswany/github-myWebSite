@@ -6,6 +6,7 @@
     { slug: "food-worldcup", label: "음식 월드컵" },
     { slug: "reaction-test", label: "반응속도" },
     { slug: "balance-game", label: "밸런스" },
+    { slug: "mini-quiz", label: "하루 타입" },
   ];
 
   function experimentHref(slug) {
