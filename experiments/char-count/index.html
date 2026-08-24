@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>글자 수 세기 — kswany</title>
+    <meta name="description" content="글을 붙여 넣으면 글자 수, 줄 수, 바이트를 바로 세어 줍니다. 서버 없이 브라우저에서만 실행됩니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="count.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">COUNT</div>
+        <h1>글자 수 세기</h1>
+        <p>글을 붙여 넣거나 입력하면 글자 수, 줄 수, 바이트가 바로 갱신됩니다. 입력값은 서버로 보내지 않습니다.</p>
+      </section>
+
+      <section class="panel">
+        <label class="field">
+          <span>텍스트</span>
+          <textarea id="text-input" rows="12" placeholder="여기에 글을 붙여 넣거나 입력하세요"></textarea>
+        </label>
+
+        <div class="actions">
+          <button class="ghost" type="button" id="clear-btn">비우기</button>
+          <button class="ghost" type="button" id="sample-btn">예시 넣기</button>
+        </div>
+
+        <div class="stat-grid" id="stat-grid" aria-live="polite">
+          <div class="stat-card">
+            <span class="stat-label">글자 (공백 포함)</span>
+            <strong class="stat-value" id="stat-chars-all">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">글자 (공백 제외)</span>
+            <strong class="stat-value" id="stat-chars-no-space">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">줄 수</span>
+            <strong class="stat-value" id="stat-lines">0</strong>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">바이트 (UTF-8)</span>
+            <strong class="stat-value" id="stat-bytes">0</strong>
+          </div>
+        </div>
+
+        <p class="hint" id="stat-hint">공백·줄바꿈·이모지도 모두 세어 줍니다.</p>
+      </section>
+
+      <footer class="foot">© kswany · 입력값은 이 브라우저에서만 처리됩니다</footer>
+    </div>
+    <script src="count.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>

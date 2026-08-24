@@ -10,6 +10,7 @@
     { slug: "mini-quiz", label: "하루 타입" },
     { slug: "text-compare", label: "텍스트 비교" },
     { slug: "quick-calc", label: "계산기" },
+    { slug: "char-count", label: "글자 수" },
   ];
 
   function experimentHref(slug) {
