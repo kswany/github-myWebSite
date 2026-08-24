@@ -4,8 +4,10 @@
   /** 새 실험 추가 시 여기에 slug·label만 넣으면 전 페이지 메뉴에 반영됩니다. */
   var EXPERIMENTS = [
     { slug: "food-worldcup", label: "음식 월드컵" },
+    { slug: "dungeon-survivor", label: "던전 서바이버" },
     { slug: "reaction-test", label: "반응속도" },
     { slug: "balance-game", label: "밸런스" },
+    { slug: "text-compare", label: "텍스트 비교" },
   ];
 
   function experimentHref(slug) {

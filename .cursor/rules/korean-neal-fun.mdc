@@ -17,6 +17,7 @@ alwaysApply: true
 - 버튼: 빵빵한 패딩, `rounded-full`, `active:scale-95`
 - 아이콘: Lucide 스타일 SVG. 이모지만 쓰지 말 것
 - 사진이 필요한 선택지는 Unsplash `object-cover` + `bg-black/40` 오버레이
+- **새 실험마다 링크 3곳 + 메뉴**: 홈 `.grid` 카드, `experiments/index.html` 카드, **`js/nav.js` EXPERIMENTS** (상단 메뉴). 하나라도 빠지면 미완성
 
 ## 화면
 
