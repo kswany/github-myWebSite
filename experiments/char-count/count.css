@@ -1,0 +1,69 @@
+.field span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+#text-input {
+  min-height: 220px;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0 20px;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.stat-card {
+  padding: 18px 14px;
+  text-align: center;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.stat-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.stat-value {
+  display: block;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--moss);
+}
+
+.hint {
+  margin: 16px 0 0;
+  color: var(--mute);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
