@@ -1,0 +1,138 @@
+.progress-track {
+  height: 8px;
+  margin: 0 0 18px;
+  background: #f1f5f9;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #14b8a6, var(--moss));
+  border-radius: 999px;
+  transition: width 0.35s ease;
+}
+
+.question {
+  margin: 0 0 16px;
+  font-size: clamp(1.35rem, 3.4vw, 1.8rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.3;
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.choice-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-height: 132px;
+  padding: 20px 18px;
+  text-align: left;
+  color: var(--ink);
+  background: #f8fafc;
+  border: 0;
+  border-radius: 24px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform var(--ease), box-shadow var(--ease), background var(--ease), opacity 0.25s ease;
+}
+
+.choice-btn:hover,
+.choice-btn:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  background: #fff;
+}
+
+.choice-btn:active {
+  transform: scale(0.97);
+}
+
+.choice-btn:focus-visible {
+  outline: 3px solid rgba(15, 118, 110, 0.4);
+  outline-offset: 3px;
+}
+
+.choice-btn.is-picked {
+  transform: translateY(-4px);
+  background: #ecfdf5;
+  box-shadow: var(--shadow-hover);
+}
+
+.choice-btn.is-dim {
+  opacity: 0.45;
+  transform: scale(0.97);
+}
+
+.choice-btn .label {
+  font-size: clamp(1.15rem, 2.8vw, 1.45rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.choice-btn .hint {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.result-kicker {
+  margin: 0 0 10px;
+  color: var(--moss);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.result-badge {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin: 0 0 14px;
+  border-radius: 20px;
+  background: #ccfbf1;
+  color: var(--moss);
+}
+
+.result-badge svg {
+  width: 34px;
+  height: 34px;
+}
+
+.result-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.result-tags li {
+  padding: 6px 12px;
+  color: var(--moss);
+  font-size: 0.82rem;
+  font-weight: 700;
+  background: #ecfdf5;
+  border-radius: 999px;
+}
+
+@media (max-width: 640px) {
+  .choices {
+    grid-template-columns: 1fr;
+  }
+
+  .choice-btn {
+    min-height: 0;
+  }
+}
