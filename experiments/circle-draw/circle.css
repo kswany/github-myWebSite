@@ -1,0 +1,92 @@
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.score-box {
+  padding: 14px 12px;
+  text-align: center;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  border-radius: 20px;
+}
+
+.score-box .label {
+  display: block;
+  color: var(--gold);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+}
+
+.score-box strong {
+  display: block;
+  margin-top: 4px;
+  font-weight: 800;
+  font-size: 1.45rem;
+  color: var(--moss);
+}
+
+.draw-wrap {
+  position: relative;
+  margin: 8px 0 12px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #fff;
+  touch-action: none;
+}
+
+#draw-canvas {
+  display: block;
+  width: 100%;
+  height: min(420px, 58vw);
+  cursor: crosshair;
+}
+
+.draw-hint {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 20px;
+  color: var(--mute);
+  font-size: 0.95rem;
+  font-weight: 600;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.draw-wrap.is-drawing .draw-hint,
+.draw-wrap.has-result .draw-hint {
+  opacity: 0;
+}
+
+.result-msg {
+  min-height: 1.4em;
+  margin: 0 0 4px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+}
+
+.result-msg.is-good {
+  color: var(--moss);
+}
+
+.result-msg.is-great {
+  color: var(--cinnabar);
+}
+
+@media (max-width: 560px) {
+  .score-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #draw-canvas {
+    height: min(360px, 72vw);
+  }
+}
