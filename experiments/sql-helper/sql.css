@@ -1,0 +1,196 @@
+.type-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.type-tab {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: var(--ink-soft);
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--ease), color var(--ease), transform 120ms ease;
+}
+
+.type-tab:hover {
+  background: #e2e8f0;
+}
+
+.type-tab.active {
+  background: var(--moss);
+  color: #fff;
+}
+
+.type-tab:active {
+  transform: scale(0.95);
+}
+
+.form-grid {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.field span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.field input {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.9rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.where-block {
+  margin-bottom: 18px;
+  padding: 16px;
+  border-radius: 20px;
+  background: #f8fafc;
+}
+
+.where-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.where-head .section-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.where-list {
+  display: grid;
+  gap: 10px;
+}
+
+.where-row {
+  display: grid;
+  grid-template-columns: 72px 1fr 120px 1fr 36px;
+  gap: 8px;
+  align-items: center;
+}
+
+.where-row select,
+.where-row input {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  padding: 10px 12px;
+}
+
+.where-row .join-select {
+  font-size: 0.78rem;
+}
+
+.remove-where {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 120ms ease, background var(--ease);
+}
+
+.remove-where:hover {
+  background: #fecaca;
+}
+
+.remove-where:active {
+  transform: scale(0.95);
+}
+
+.where-hint {
+  margin: 12px 0 0;
+  color: var(--mute);
+  font-size: 0.82rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.output-wrap {
+  margin-top: 6px;
+}
+
+.output-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.output-head .section-title {
+  margin: 0;
+}
+
+.copy-btn.copied {
+  color: var(--moss);
+}
+
+.sql-output {
+  margin: 0;
+  padding: 18px;
+  border-radius: 16px;
+  background: #0f172a;
+  color: #e2e8f0;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: auto;
+}
+
+@media (max-width: 720px) {
+  .where-row {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .where-row .join-select {
+    grid-column: 1;
+  }
+
+  .where-row input:first-of-type {
+    grid-column: 2;
+  }
+
+  .where-row select:not(.join-select) {
+    grid-column: 1;
+  }
+
+  .where-row input:last-of-type {
+    grid-column: 2;
+  }
+
+  .remove-where {
+    grid-column: 2;
+    justify-self: end;
+  }
+}
