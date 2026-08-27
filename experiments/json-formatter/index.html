@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JSON 정리 — kswany</title>
+    <meta name="description" content="붙여 넣은 JSON을 보기 좋게 정렬하고, 오류가 있으면 위치를 알려 줍니다. 서버 없이 브라우저에서만 실행됩니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="format.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">JSON</div>
+        <h1>JSON 정리</h1>
+        <p>JSON을 붙여 넣으면 들여쓰기로 정리하거나 한 줄로 줄여 줍니다. 형식이 틀리면 어디가 문제인지 알려 줍니다.</p>
+      </section>
+
+      <section class="panel">
+        <label class="field">
+          <span>입력</span>
+          <textarea id="json-input" rows="10" spellcheck="false" placeholder='예: {"name":"kswany","tags":["web","fun"]}'></textarea>
+        </label>
+
+        <div class="toolbar">
+          <label class="indent-pick">
+            <span>들여쓰기</span>
+            <select id="indent-select">
+              <option value="2" selected>2칸</option>
+              <option value="4">4칸</option>
+              <option value="tab">탭</option>
+            </select>
+          </label>
+          <div class="actions">
+            <button class="primary" type="button" id="format-btn">정리하기</button>
+            <button class="ghost" type="button" id="minify-btn">한 줄로</button>
+            <button class="ghost" type="button" id="copy-btn">결과 복사</button>
+            <button class="ghost" type="button" id="sample-btn">예시 넣기</button>
+            <button class="ghost" type="button" id="clear-btn">비우기</button>
+          </div>
+        </div>
+
+        <div class="status ok" id="status-ok" hidden aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+          <span id="status-ok-text">올바른 JSON입니다.</span>
+        </div>
+
+        <div class="status err" id="status-err" hidden aria-live="assertive">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 8v4M12 16h.01" />
+          </svg>
+          <div>
+            <strong id="status-err-title">JSON 형식 오류</strong>
+            <p id="status-err-text"></p>
+          </div>
+        </div>
+
+        <label class="field output-field">
+          <span>결과</span>
+          <textarea id="json-output" rows="12" readonly spellcheck="false" placeholder="정리된 JSON이 여기에 나옵니다"></textarea>
+        </label>
+
+        <p class="hint" id="stat-hint">입력값은 서버로 보내지 않습니다. 붙여 넣은 뒤 정리하기를 누르세요.</p>
+      </section>
+
+      <footer class="foot">© kswany · 입력값은 이 브라우저에서만 처리됩니다</footer>
+    </div>
+    <script src="format.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>

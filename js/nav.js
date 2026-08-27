@@ -13,6 +13,7 @@
     { slug: "char-count", label: "글자 수" },
     { slug: "circle-draw", label: "원 그리기" },
     { slug: "sql-helper", label: "SQL 도우미" },
+    { slug: "json-formatter", label: "JSON 정리" },
   ];
 
   function experimentHref(slug) {
