@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SQL 쿼리 도우미 — kswany</title>
+    <meta name="description" content="표 이름과 조건만 넣으면 SELECT·INSERT 뼈대를 만들어 줍니다. 서버 없이 브라우저에서만 실행됩니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="sql.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">SQL</div>
+        <h1>SQL 쿼리 도우미</h1>
+        <p>표 이름과 열을 넣으면 SELECT·INSERT·UPDATE·DELETE 뼈대를 만들어 줍니다. WHERE 조건도 버튼으로 추가할 수 있습니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="type-tabs" role="tablist" aria-label="쿼리 종류">
+          <button type="button" class="type-tab active" data-type="select" role="tab" aria-selected="true">SELECT</button>
+          <button type="button" class="type-tab" data-type="insert" role="tab" aria-selected="false">INSERT</button>
+          <button type="button" class="type-tab" data-type="update" role="tab" aria-selected="false">UPDATE</button>
+          <button type="button" class="type-tab" data-type="delete" role="tab" aria-selected="false">DELETE</button>
+        </div>
+
+        <div class="form-grid">
+          <label class="field">
+            <span>표 이름</span>
+            <input type="text" id="table-name" placeholder="users" autocomplete="off" />
+          </label>
+
+          <label class="field" id="field-columns">
+            <span id="columns-label">가져올 열 (쉼표로 구분, * 가능)</span>
+            <input type="text" id="columns" placeholder="id, name, email" autocomplete="off" />
+          </label>
+
+          <label class="field hidden" id="field-values">
+            <span>넣을 값 (쉼표로 구분, 문자는 따옴표)</span>
+            <input type="text" id="values" placeholder="'홍길동', 25, 'seoul'" autocomplete="off" />
+          </label>
+
+          <label class="field hidden" id="field-set">
+            <span>바꿀 내용 (열=값, 쉼표로 구분)</span>
+            <input type="text" id="set-clause" placeholder="name = '김철수', age = 30" autocomplete="off" />
+          </label>
+        </div>
+
+        <div class="where-block" id="where-block">
+          <div class="where-head">
+            <h2 class="section-title">WHERE 조건</h2>
+            <button class="ghost" type="button" id="add-where">조건 추가</button>
+          </div>
+          <div class="where-list" id="where-list"></div>
+          <p class="where-hint">조건이 없으면 WHERE 없이 만듭니다.</p>
+        </div>
+
+        <div class="actions">
+          <button class="primary" type="button" id="generate-btn">쿼리 만들기</button>
+          <button class="ghost" type="button" id="sample-btn">예시 넣기</button>
+          <button class="ghost" type="button" id="clear-btn">비우기</button>
+        </div>
+
+        <div class="output-wrap" id="output-wrap" hidden>
+          <div class="output-head">
+            <h2 class="section-title">만든 쿼리</h2>
+            <button class="ghost copy-btn" type="button" id="copy-btn">복사</button>
+          </div>
+          <pre class="sql-output" id="sql-output" aria-live="polite"></pre>
+          <p class="hint" id="copy-hint"></p>
+        </div>
+      </section>
+
+      <footer class="foot">© kswany · 입력값은 이 브라우저에서만 처리됩니다</footer>
+    </div>
+    <script src="sql.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>
