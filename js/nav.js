@@ -15,6 +15,7 @@
     { slug: "sql-helper", label: "SQL 도우미" },
     { slug: "json-formatter", label: "JSON 정리" },
     { slug: "encode-tool", label: "인코딩" },
+    { slug: "unit-converter", label: "단위 변환" },
   ];
 
   function experimentHref(slug) {

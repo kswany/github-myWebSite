@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>단위 변환 — kswany</title>
+    <meta name="description" content="길이·무게·온도를 바로 바꿔 주는 작은 도구. 브라우저에서만 실행됩니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="unit.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">UNIT</div>
+        <h1>단위 변환</h1>
+        <p>길이·무게·온도를 숫자만 넣으면 바로 바꿔 줍니다. 입력값은 서버로 보내지 않습니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="tab-bar" role="tablist" aria-label="변환 종류">
+          <button class="tab active" type="button" role="tab" id="tab-length" aria-selected="true" aria-controls="panel-length">길이</button>
+          <button class="tab" type="button" role="tab" id="tab-weight" aria-selected="false" aria-controls="panel-weight">무게</button>
+          <button class="tab" type="button" role="tab" id="tab-temp" aria-selected="false" aria-controls="panel-temp">온도</button>
+        </div>
+
+        <div class="tab-panel active" id="panel-length" role="tabpanel" aria-labelledby="tab-length">
+          <p class="panel-desc">미터·킬로미터·센티미터·인치·피트 등을 서로 바꿉니다.</p>
+          <div class="convert-row">
+            <div class="field">
+              <label for="length-value">값</label>
+              <input type="number" id="length-value" inputmode="decimal" step="any" placeholder="1" value="1" />
+            </div>
+            <div class="field">
+              <label for="length-from">변환 전</label>
+              <select id="length-from"></select>
+            </div>
+            <button class="swap-btn" type="button" id="length-swap" aria-label="단위 바꾸기">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 16V4M7 4L3 8M7 4l4 4" />
+                <path d="M17 8v12M17 20l4-4M17 20l-4-4" />
+              </svg>
+            </button>
+            <div class="field">
+              <label for="length-to">변환 후</label>
+              <select id="length-to"></select>
+            </div>
+          </div>
+          <div class="result-card" id="length-result" aria-live="polite">
+            <p class="result-kicker">결과</p>
+            <p class="result-main" id="length-main">-</p>
+            <p class="result-sub" id="length-sub">숫자를 넣으면 바로 계산합니다.</p>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="panel-weight" role="tabpanel" aria-labelledby="tab-weight" hidden>
+          <p class="panel-desc">킬로그램·그램·파운드·온스를 서로 바꿉니다.</p>
+          <div class="convert-row">
+            <div class="field">
+              <label for="weight-value">값</label>
+              <input type="number" id="weight-value" inputmode="decimal" step="any" placeholder="1" value="1" />
+            </div>
+            <div class="field">
+              <label for="weight-from">변환 전</label>
+              <select id="weight-from"></select>
+            </div>
+            <button class="swap-btn" type="button" id="weight-swap" aria-label="단위 바꾸기">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 16V4M7 4L3 8M7 4l4 4" />
+                <path d="M17 8v12M17 20l4-4M17 20l-4-4" />
+              </svg>
+            </button>
+            <div class="field">
+              <label for="weight-to">변환 후</label>
+              <select id="weight-to"></select>
+            </div>
+          </div>
+          <div class="result-card weight" id="weight-result" aria-live="polite">
+            <p class="result-kicker">결과</p>
+            <p class="result-main" id="weight-main">-</p>
+            <p class="result-sub" id="weight-sub">숫자를 넣으면 바로 계산합니다.</p>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="panel-temp" role="tabpanel" aria-labelledby="tab-temp" hidden>
+          <p class="panel-desc">섭씨·화씨·켈빈을 서로 바꿉니다.</p>
+          <div class="convert-row temp-row">
+            <div class="field">
+              <label for="temp-value">값</label>
+              <input type="number" id="temp-value" inputmode="decimal" step="any" placeholder="25" value="25" />
+            </div>
+            <div class="field">
+              <label for="temp-from">변환 전</label>
+              <select id="temp-from"></select>
+            </div>
+            <button class="swap-btn" type="button" id="temp-swap" aria-label="단위 바꾸기">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 16V4M7 4L3 8M7 4l4 4" />
+                <path d="M17 8v12M17 20l4-4M17 20l-4-4" />
+              </svg>
+            </button>
+            <div class="field">
+              <label for="temp-to">변환 후</label>
+              <select id="temp-to"></select>
+            </div>
+          </div>
+          <div class="result-card temp" id="temp-result" aria-live="polite">
+            <p class="result-kicker">결과</p>
+            <p class="result-main" id="temp-main">-</p>
+            <p class="result-sub" id="temp-sub">숫자를 넣으면 바로 계산합니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="foot">© kswany · 단위 변환은 이 브라우저에서만 계산됩니다</footer>
+    </div>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+    <script src="unit.js" defer></script>
+  </body>
+</html>
