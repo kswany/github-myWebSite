@@ -16,6 +16,7 @@
     { slug: "json-formatter", label: "JSON 정리" },
     { slug: "encode-tool", label: "인코딩" },
     { slug: "unit-converter", label: "단위 변환" },
+    { slug: "lottery-pick", label: "제비뽑기" },
   ];
 
   function experimentHref(slug) {
