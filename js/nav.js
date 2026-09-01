@@ -18,6 +18,7 @@
     { slug: "unit-converter", label: "단위 변환" },
     { slug: "lottery-pick", label: "제비뽑기" },
     { slug: "daily-line", label: "오늘의 한 줄" },
+    { slug: "reading-time", label: "읽기 시간" },
   ];
 
   function experimentHref(slug) {
