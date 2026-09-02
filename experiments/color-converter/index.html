@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>색상 변환 — kswany</title>
+    <meta name="description" content="HEX·RGB·HSL 색 코드를 서로 바꿔 줍니다. 브라우저에서만 실행됩니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="color.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">CLR</div>
+        <h1>색상 변환</h1>
+        <p>HEX·RGB·HSL 코드를 서로 바꿔 줍니다. 색을 고르거나 코드를 붙여 넣으면 바로 반영됩니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="preview-wrap">
+          <div class="preview-swatch" id="preview" aria-hidden="true"></div>
+          <div class="preview-meta">
+            <p class="preview-kicker">미리보기</p>
+            <p class="preview-hex" id="preview-hex">#3B82F6</p>
+            <label class="picker-label">
+              <span>색 고르기</span>
+              <input type="color" id="color-picker" value="#3B82F6" aria-label="색 고르기" />
+            </label>
+          </div>
+        </div>
+
+        <div class="tab-bar" role="tablist" aria-label="입력 형식">
+          <button class="tab active" type="button" role="tab" id="tab-hex" aria-selected="true" aria-controls="panel-hex">HEX</button>
+          <button class="tab" type="button" role="tab" id="tab-rgb" aria-selected="false" aria-controls="panel-rgb">RGB</button>
+          <button class="tab" type="button" role="tab" id="tab-hsl" aria-selected="false" aria-controls="panel-hsl">HSL</button>
+        </div>
+
+        <div class="tab-panel active" id="panel-hex" role="tabpanel" aria-labelledby="tab-hex">
+          <p class="panel-desc">예: <code>#3B82F6</code> 또는 <code>3B82F6</code></p>
+          <div class="input-row">
+            <label class="field grow">
+              <span>HEX</span>
+              <input type="text" id="hex-input" spellcheck="false" placeholder="#3B82F6" value="#3B82F6" autocomplete="off" />
+            </label>
+            <button class="ghost copy-btn" type="button" data-copy="hex">복사</button>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="panel-rgb" role="tabpanel" aria-labelledby="tab-rgb" hidden>
+          <p class="panel-desc">빨강·초록·파랑 값은 0~255 사이입니다.</p>
+          <div class="rgb-grid">
+            <label class="field">
+              <span>R</span>
+              <input type="number" id="rgb-r" min="0" max="255" value="59" />
+            </label>
+            <label class="field">
+              <span>G</span>
+              <input type="number" id="rgb-g" min="0" max="255" value="130" />
+            </label>
+            <label class="field">
+              <span>B</span>
+              <input type="number" id="rgb-b" min="0" max="255" value="246" />
+            </label>
+          </div>
+          <div class="input-row">
+            <p class="rgb-string" id="rgb-string">rgb(59, 130, 246)</p>
+            <button class="ghost copy-btn" type="button" data-copy="rgb">복사</button>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="panel-hsl" role="tabpanel" aria-labelledby="tab-hsl" hidden>
+          <p class="panel-desc">색상 0~360, 채도·밝기 0~100%입니다.</p>
+          <div class="hsl-grid">
+            <label class="field">
+              <span>H</span>
+              <input type="number" id="hsl-h" min="0" max="360" value="217" />
+            </label>
+            <label class="field">
+              <span>S</span>
+              <input type="number" id="hsl-s" min="0" max="100" value="91" />
+            </label>
+            <label class="field">
+              <span>L</span>
+              <input type="number" id="hsl-l" min="0" max="100" value="60" />
+            </label>
+          </div>
+          <div class="input-row">
+            <p class="hsl-string" id="hsl-string">hsl(217, 91%, 60%)</p>
+            <button class="ghost copy-btn" type="button" data-copy="hsl">복사</button>
+          </div>
+        </div>
+
+        <div class="status err" id="status-err" hidden aria-live="assertive">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 8v4M12 16h.01" />
+          </svg>
+          <div>
+            <strong>색 코드 오류</strong>
+            <p id="status-err-text">올바른 색 코드를 넣어 주세요.</p>
+          </div>
+        </div>
+
+        <div class="status ok" id="status-ok" hidden aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+          <span id="status-ok-text">복사했습니다.</span>
+        </div>
+
+        <div class="toolbar">
+          <div class="actions">
+            <button class="ghost" type="button" id="sample-btn">예시 넣기</button>
+            <button class="ghost" type="button" id="random-btn">무작위 색</button>
+          </div>
+        </div>
+
+        <div class="outputs">
+          <div class="output-card">
+            <p class="output-label">HEX</p>
+            <p class="output-value" id="out-hex">#3B82F6</p>
+          </div>
+          <div class="output-card">
+            <p class="output-label">RGB</p>
+            <p class="output-value" id="out-rgb">rgb(59, 130, 246)</p>
+          </div>
+          <div class="output-card">
+            <p class="output-label">HSL</p>
+            <p class="output-value" id="out-hsl">hsl(217, 91%, 60%)</p>
+          </div>
+        </div>
+
+        <p class="hint">입력값은 서버로 보내지 않습니다. 한 형식을 바꾸면 나머지도 함께 갱신됩니다.</p>
+      </section>
+
+      <footer class="foot">© kswany · 색상 변환은 이 브라우저에서만 계산됩니다</footer>
+    </div>
+    <script src="color.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>
