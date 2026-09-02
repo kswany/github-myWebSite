@@ -36,9 +36,9 @@
     return "#" + padHex(r) + padHex(g) + padHex(b);
   }
 
-  function parseHex(raw) {
+  function parseHex(raw, allowShort) {
     var s = String(raw || "").trim().replace(/^#/, "");
-    if (/^[0-9a-fA-F]{3}$/.test(s)) {
+    if (allowShort && /^[0-9a-fA-F]{3}$/.test(s)) {
       s = s[0] + s[0] + s[1] + s[1] + s[2] + s[2];
     }
     if (!/^[0-9a-fA-F]{6}$/.test(s)) return null;
@@ -140,7 +140,8 @@
     }, 1800);
   }
 
-  function applyColor(rgb) {
+  function applyColor(rgb, opts) {
+    opts = opts || {};
     var hex = rgbToHex(rgb.r, rgb.g, rgb.b);
     var hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
     var rgbText = formatRgb(rgb.r, rgb.g, rgb.b);
@@ -150,7 +151,9 @@
     previewHex.textContent = hex;
     colorPicker.value = hex.toLowerCase();
 
-    hexInput.value = hex;
+    if (!opts.keepHexInput) {
+      hexInput.value = hex;
+    }
     rgbR.value = rgb.r;
     rgbG.value = rgb.g;
     rgbB.value = rgb.b;
@@ -167,15 +170,19 @@
     hideError();
   }
 
-  function updateFromHex() {
+  function updateFromHex(isFinal) {
     if (updating) return;
-    var rgb = parseHex(hexInput.value);
+    var rgb = parseHex(hexInput.value, isFinal);
     if (!rgb) {
-      showError("HEX는 #RRGGBB 또는 RRGGBB 형식이어야 합니다.");
+      if (isFinal) {
+        showError("HEX는 #RRGGBB 또는 RRGGBB 형식이어야 합니다.");
+      } else {
+        hideError();
+      }
       return;
     }
     updating = true;
-    applyColor(rgb);
+    applyColor(rgb, { keepHexInput: !isFinal });
     updating = false;
   }
 
@@ -201,7 +208,7 @@
 
   function updateFromPicker() {
     if (updating) return;
-    var rgb = parseHex(colorPicker.value);
+    var rgb = parseHex(colorPicker.value, true);
     if (!rgb) return;
     updating = true;
     applyColor(rgb);
@@ -252,8 +259,12 @@
     });
   }
 
-  hexInput.addEventListener("input", updateFromHex);
-  hexInput.addEventListener("change", updateFromHex);
+  hexInput.addEventListener("input", function () {
+    updateFromHex(false);
+  });
+  hexInput.addEventListener("change", function () {
+    updateFromHex(true);
+  });
   [rgbR, rgbG, rgbB].forEach(function (el) {
     el.addEventListener("input", updateFromRgb);
     el.addEventListener("change", updateFromRgb);
@@ -275,7 +286,7 @@
 
   document.getElementById("sample-btn").addEventListener("click", function () {
     hexInput.value = samples[Math.floor(Math.random() * samples.length)];
-    updateFromHex();
+    updateFromHex(true);
   });
 
   document.getElementById("random-btn").addEventListener("click", function () {
@@ -287,5 +298,5 @@
   });
 
   setupTabs();
-  applyColor(parseHex("#3B82F6"));
+  applyColor(parseHex("#3B82F6", true));
 })();
