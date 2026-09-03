@@ -20,6 +20,7 @@
     { slug: "daily-line", label: "오늘의 한 줄" },
     { slug: "reading-time", label: "읽기 시간" },
     { slug: "color-converter", label: "색상 변환" },
+    { slug: "uuid-generator", label: "UUID" },
   ];
 
   function experimentHref(slug) {
