@@ -21,6 +21,7 @@
     { slug: "reading-time", label: "읽기 시간" },
     { slug: "color-converter", label: "색상 변환" },
     { slug: "uuid-generator", label: "UUID" },
+    { slug: "regex-test", label: "정규식" },
   ];
 
   function experimentHref(slug) {
