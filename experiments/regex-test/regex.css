@@ -1,0 +1,250 @@
+.pattern-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.pattern-slash {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--mute);
+}
+
+#pattern-input {
+  flex: 1 1 180px;
+  min-width: 0;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.95rem;
+}
+
+.flag-group {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.flag-chip {
+  min-width: 36px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.flag-chip:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.flag-chip[aria-pressed="true"] {
+  background: var(--ink);
+  color: #fff;
+  box-shadow: var(--shadow-lg);
+}
+
+.quick-patterns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 18px;
+}
+
+.chip {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chip:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.field span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+#text-input {
+  min-height: 140px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.toolbar {
+  margin: 14px 0 16px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.status {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.status svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.status.ok {
+  background: #ecfdf5;
+  color: #065f46;
+}
+
+.status.err {
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.status.err strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.92rem;
+}
+
+.status.err p {
+  margin: 0;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.result-block {
+  margin-bottom: 16px;
+}
+
+.result-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.result-count {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  color: var(--mute);
+}
+
+.highlight-box {
+  min-height: 120px;
+  padding: 16px;
+  border-radius: 20px;
+  background: #f8fafc;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.highlight-box .placeholder {
+  color: var(--mute);
+}
+
+.highlight-box mark {
+  padding: 0 2px;
+  border-radius: 4px;
+  background: #fef08a;
+  color: #713f12;
+  font-weight: 700;
+}
+
+.match-list-wrap {
+  margin-bottom: 8px;
+}
+
+.match-list-title {
+  margin: 0 0 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.match-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.match-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  font-size: 0.88rem;
+}
+
+.match-list li + li {
+  margin-top: 8px;
+}
+
+.match-index {
+  flex-shrink: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--mute);
+}
+
+.match-value {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  word-break: break-all;
+}
+
+.match-pos {
+  margin-left: auto;
+  font-size: 0.78rem;
+  color: var(--mute);
+}
+
+.hint {
+  margin: 16px 0 0;
+  color: var(--mute);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .match-pos {
+    margin-left: 0;
+    width: 100%;
+  }
+}
