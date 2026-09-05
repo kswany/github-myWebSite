@@ -22,6 +22,7 @@
     { slug: "color-converter", label: "색상 변환" },
     { slug: "uuid-generator", label: "UUID" },
     { slug: "regex-test", label: "정규식" },
+    { slug: "unix-time", label: "시간 변환" },
   ];
 
   function experimentHref(slug) {
