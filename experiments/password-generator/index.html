@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>비밀번호 만들기 — kswany</title>
+    <meta name="description" content="길이와 문자 종류를 고르면 안전한 비밀번호를 만듭니다. 브라우저에서만 실행됩니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="password.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">PWD</div>
+        <h1>비밀번호 만들기</h1>
+        <p>길이와 문자 종류를 고르면 추측하기 어려운 비밀번호를 만듭니다. 값은 서버로 보내지 않습니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="options">
+          <fieldset class="option-group">
+            <legend>길이</legend>
+            <div class="chip-row" role="group" aria-label="비밀번호 길이">
+              <button class="chip" type="button" data-length="8">8자</button>
+              <button class="chip active" type="button" data-length="12">12자</button>
+              <button class="chip" type="button" data-length="16">16자</button>
+              <button class="chip" type="button" data-length="20">20자</button>
+            </div>
+          </fieldset>
+
+          <div class="length-slider">
+            <label for="length-range">직접 조절</label>
+            <div class="slider-row">
+              <input type="range" id="length-range" min="6" max="32" value="12" />
+              <output id="length-output" for="length-range">12자</output>
+            </div>
+          </div>
+        </div>
+
+        <fieldset class="charset-group">
+          <legend>포함할 문자</legend>
+          <div class="check-grid">
+            <label class="check">
+              <input type="checkbox" id="use-lower" checked />
+              <span class="check-ui" aria-hidden="true"></span>
+              <span>소문자 <em>a-z</em></span>
+            </label>
+            <label class="check">
+              <input type="checkbox" id="use-upper" checked />
+              <span class="check-ui" aria-hidden="true"></span>
+              <span>대문자 <em>A-Z</em></span>
+            </label>
+            <label class="check">
+              <input type="checkbox" id="use-number" checked />
+              <span class="check-ui" aria-hidden="true"></span>
+              <span>숫자 <em>0-9</em></span>
+            </label>
+            <label class="check">
+              <input type="checkbox" id="use-symbol" />
+              <span class="check-ui" aria-hidden="true"></span>
+              <span>기호 <em>!@#$%</em></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="password-stage" aria-live="polite">
+          <div class="stage-head">
+            <p class="stage-kicker" id="stage-kicker">아직 없음</p>
+            <button class="icon-btn" type="button" id="toggle-btn" aria-label="비밀번호 보기" disabled>
+              <svg class="icon-show" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              <svg class="icon-hide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" hidden>
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                <path d="M1 1l22 22" />
+              </svg>
+            </button>
+          </div>
+          <p class="password-value" id="password-value">버튼을 누르면 비밀번호가 나옵니다</p>
+          <div class="strength" id="strength" hidden>
+            <div class="strength-bar" aria-hidden="true">
+              <span class="strength-fill" id="strength-fill"></span>
+            </div>
+            <p class="strength-label" id="strength-label">강도</p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="primary" type="button" id="generate-btn">비밀번호 만들기</button>
+          <button class="ghost" type="button" id="copy-btn" disabled>복사</button>
+        </div>
+
+        <div class="status ok" id="status-ok" hidden aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+          <span id="status-ok-text">복사했습니다.</span>
+        </div>
+
+        <p class="hint">무작위 값은 이 브라우저에서만 만듭니다. 중요한 계정에는 기호 포함·16자 이상을 권장합니다.</p>
+      </section>
+
+      <footer class="foot">© kswany · 비밀번호는 이 브라우저에서만 생성됩니다</footer>
+    </div>
+    <script src="password.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>
