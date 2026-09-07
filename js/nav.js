@@ -24,6 +24,7 @@
     { slug: "regex-test", label: "정규식" },
     { slug: "unix-time", label: "시간 변환" },
     { slug: "markdown-preview", label: "마크다운" },
+    { slug: "password-generator", label: "비밀번호" },
   ];
 
   function experimentHref(slug) {
