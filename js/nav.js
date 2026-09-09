@@ -26,6 +26,7 @@
     { slug: "markdown-preview", label: "마크다운" },
     { slug: "password-generator", label: "비밀번호" },
     { slug: "lorem-fill", label: "Lorem" },
+    { slug: "gradient-maker", label: "그라데이션" },
   ];
 
   function experimentHref(slug) {
