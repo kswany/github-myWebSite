@@ -27,6 +27,7 @@
     { slug: "password-generator", label: "비밀번호" },
     { slug: "lorem-fill", label: "Lorem" },
     { slug: "gradient-maker", label: "그라데이션" },
+    { slug: "contrast-check", label: "대비율" },
   ];
 
   function experimentHref(slug) {

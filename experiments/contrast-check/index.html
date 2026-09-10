@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>대비율 확인 — kswany</title>
+    <meta name="description" content="글색과 배경색을 넣으면 읽기 쉬운지 WCAG 대비율 점수를 보여 줍니다. 브라우저에서만 실행됩니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="contrast.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">AA</div>
+        <h1>대비율 확인</h1>
+        <p>글색과 배경색을 고르면 읽기 쉬운지 WCAG 대비율 점수를 바로 보여 줍니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="preview-box" id="preview" aria-live="polite">
+          <p class="preview-title">가독성 미리보기</p>
+          <p class="preview-body">한글과 English 123 — 버튼·링크처럼 작은 글도 읽기 쉬운가요?</p>
+          <p class="preview-large">큰 제목도 선명하게 보이나요?</p>
+        </div>
+
+        <div class="score-panel" id="score-panel">
+          <div class="score-main">
+            <p class="score-kicker">대비율</p>
+            <p class="score-value" id="ratio-value">—</p>
+            <p class="score-label" id="ratio-label">색을 고르면 점수가 나옵니다</p>
+          </div>
+          <div class="score-gauge" aria-hidden="true">
+            <div class="score-gauge-fill" id="gauge-fill"></div>
+          </div>
+        </div>
+
+        <div class="color-row">
+          <label class="color-field">
+            <span>글색</span>
+            <div class="color-control">
+              <input type="color" id="fg-picker" value="#1E293B" aria-label="글색" />
+              <input type="text" id="fg-hex" spellcheck="false" value="#1E293B" autocomplete="off" />
+            </div>
+          </label>
+          <button class="swap-btn" type="button" id="swap-btn" aria-label="글색과 배경색 바꾸기">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M7 16V4M7 4L3 8M7 4l4 4" />
+              <path d="M17 8v12M17 20l4-4M17 20l-4-4" />
+            </svg>
+          </button>
+          <label class="color-field">
+            <span>배경색</span>
+            <div class="color-control">
+              <input type="color" id="bg-picker" value="#F9FAFB" aria-label="배경색" />
+              <input type="text" id="bg-hex" spellcheck="false" value="#F9FAFB" autocomplete="off" />
+            </div>
+          </label>
+        </div>
+
+        <div class="status err" id="status-err" hidden aria-live="assertive">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 8v4M12 16h.01" />
+          </svg>
+          <div>
+            <strong>색 코드 오류</strong>
+            <p id="status-err-text">올바른 HEX 색 코드를 넣어 주세요.</p>
+          </div>
+        </div>
+
+        <div class="checks">
+          <div class="check-card" id="check-aa-normal">
+            <p class="check-title">일반 글 AA</p>
+            <p class="check-desc">4.5:1 이상</p>
+            <p class="check-result" aria-live="polite">—</p>
+          </div>
+          <div class="check-card" id="check-aa-large">
+            <p class="check-title">큰 글 AA</p>
+            <p class="check-desc">3:1 이상</p>
+            <p class="check-result" aria-live="polite">—</p>
+          </div>
+          <div class="check-card" id="check-aaa-normal">
+            <p class="check-title">일반 글 AAA</p>
+            <p class="check-desc">7:1 이상</p>
+            <p class="check-result" aria-live="polite">—</p>
+          </div>
+          <div class="check-card" id="check-aaa-large">
+            <p class="check-title">큰 글 AAA</p>
+            <p class="check-desc">4.5:1 이상</p>
+            <p class="check-result" aria-live="polite">—</p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="ghost" type="button" id="sample-btn">예시 조합</button>
+          <button class="ghost" type="button" id="random-btn">무작위 조합</button>
+        </div>
+
+        <p class="hint">WCAG 2.1 기준입니다. 입력값은 서버로 보내지 않습니다.</p>
+      </section>
+
+      <footer class="foot">© kswany · 대비율 확인은 이 브라우저에서만 계산됩니다</footer>
+    </div>
+    <script src="contrast.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>
