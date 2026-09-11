@@ -28,6 +28,7 @@
     { slug: "lorem-fill", label: "Lorem" },
     { slug: "gradient-maker", label: "그라데이션" },
     { slug: "contrast-check", label: "대비율" },
+    { slug: "qr-generator", label: "QR" },
   ];
 
   function experimentHref(slug) {
