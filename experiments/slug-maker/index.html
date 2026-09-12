@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>슬러그 만들기 — kswany</title>
+    <meta name="description" content="한글 제목을 넣으면 URL에 쓸 영문 slug를 만듭니다. 브라우저에서만 실행됩니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="slug.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">URL</div>
+        <h1>슬러그 만들기</h1>
+        <p>블로그·GitHub Pages 제목을 넣으면 주소에 넣기 좋은 영문 slug를 만들어 줍니다. 입력은 서버로 보내지 않습니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="field">
+          <label for="title-input">제목</label>
+          <input type="text" id="title-input" placeholder="예: 오늘의 웹 실험, 2026 여름 메모" maxlength="120" autocomplete="off" />
+        </div>
+
+        <div class="options">
+          <fieldset class="option-group">
+            <legend>구분 기호</legend>
+            <div class="chip-row" role="group" aria-label="구분 기호">
+              <button class="chip active" type="button" data-sep="-">하이픈 (-)</button>
+              <button class="chip" type="button" data-sep="_">밑줄 (_)</button>
+            </div>
+          </fieldset>
+
+          <label class="toggle">
+            <input type="checkbox" id="keep-english" checked />
+            <span class="toggle-ui" aria-hidden="true"></span>
+            <span>영문·숫자는 그대로 두기</span>
+          </label>
+        </div>
+
+        <div class="slug-stage" aria-live="polite">
+          <p class="stage-kicker">만든 slug</p>
+          <p class="slug-result" id="slug-result">제목을 입력하세요</p>
+          <p class="slug-preview" id="slug-preview" hidden></p>
+        </div>
+
+        <div class="actions">
+          <button class="primary" type="button" id="copy-btn" disabled>slug 복사</button>
+          <button class="ghost" type="button" id="sample-btn">예시 넣기</button>
+          <button class="ghost" type="button" id="clear-btn">비우기</button>
+        </div>
+
+        <div class="status ok" id="status-ok" hidden aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+          <span id="status-ok-text">복사했습니다.</span>
+        </div>
+
+        <p class="hint">한글은 국립국어원 로마자 표기(개정)에 가깝게 영문으로 바꿉니다. 이미 영문인 단어는 가능한 그대로 둡니다.</p>
+      </section>
+
+      <footer class="foot">© kswany · slug는 이 브라우저에서만 만듭니다</footer>
+    </div>
+    <script src="slug.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>

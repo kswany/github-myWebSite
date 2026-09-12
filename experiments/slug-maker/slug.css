@@ -1,0 +1,153 @@
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+#title-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  font: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+#title-input:focus {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  align-items: center;
+  margin: 18px 0 20px;
+}
+
+.option-group {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.option-group legend {
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.chip:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.chip.active {
+  background: var(--ink);
+  color: #fff;
+  box-shadow: var(--shadow-lg);
+}
+
+.slug-stage {
+  margin-bottom: 16px;
+  padding: 20px 18px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.stage-kicker {
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.slug-result {
+  margin: 0;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 1.05rem;
+  font-weight: 700;
+  word-break: break-all;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.slug-result.empty {
+  color: var(--mute);
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.slug-preview {
+  margin: 12px 0 0;
+  font-size: 0.85rem;
+  color: var(--mute);
+  word-break: break-all;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.status {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.status.ok {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.status svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--mute);
+  line-height: 1.55;
+}
