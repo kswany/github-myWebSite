@@ -30,6 +30,7 @@
     { slug: "contrast-check", label: "대비율" },
     { slug: "qr-generator", label: "QR" },
     { slug: "slug-maker", label: "slug" },
+    { slug: "hash-maker", label: "해시" },
   ];
 
   function experimentHref(slug) {
