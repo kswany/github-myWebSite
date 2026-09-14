@@ -31,6 +31,7 @@
     { slug: "qr-generator", label: "QR" },
     { slug: "slug-maker", label: "slug" },
     { slug: "hash-maker", label: "해시" },
+    { slug: "cron-explainer", label: "크론" },
   ];
 
   function experimentHref(slug) {
