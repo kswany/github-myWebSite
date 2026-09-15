@@ -32,6 +32,7 @@
     { slug: "slug-maker", label: "slug" },
     { slug: "hash-maker", label: "해시" },
     { slug: "cron-explainer", label: "크론" },
+    { slug: "timezone-compare", label: "타임존" },
   ];
 
   function experimentHref(slug) {
