@@ -33,6 +33,7 @@
     { slug: "hash-maker", label: "해시" },
     { slug: "cron-explainer", label: "크론" },
     { slug: "timezone-compare", label: "타임존" },
+    { slug: "line-break-clean", label: "줄바꿈 정리" },
   ];
 
   function experimentHref(slug) {
