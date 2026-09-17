@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Base64 이미지 미리보기 — kswany</title>
+    <meta name="description" content="data URL이나 Base64 문자열을 붙이면 그림 크기·형식·용량을 바로 확인합니다. 서버 없이 브라우저에서만 실행됩니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="preview.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">IMG</div>
+        <h1>Base64 이미지 미리보기</h1>
+        <p>CSS나 HTML에 넣은 <code>data:image/…;base64,…</code> 문자열을 붙이면 그림과 크기·형식을 바로 봅니다. 파일은 서버로 보내지 않습니다.</p>
+      </section>
+
+      <section class="panel">
+        <label class="field">
+          <span>data URL 또는 Base64</span>
+          <textarea id="data-in" rows="6" placeholder="data:image/png;base64,iVBORw0KGgo… 또는 Base64만 붙여 넣어도 됩니다"></textarea>
+        </label>
+
+        <div class="mime-row" id="mime-row" hidden>
+          <span class="mime-label">형식 추정 (Base64만 넣었을 때)</span>
+          <div class="mime-choices" role="radiogroup" aria-label="이미지 형식">
+            <label class="mime-chip"><input type="radio" name="mime" value="image/png" checked /> PNG</label>
+            <label class="mime-chip"><input type="radio" name="mime" value="image/jpeg" /> JPEG</label>
+            <label class="mime-chip"><input type="radio" name="mime" value="image/gif" /> GIF</label>
+            <label class="mime-chip"><input type="radio" name="mime" value="image/webp" /> WebP</label>
+            <label class="mime-chip"><input type="radio" name="mime" value="image/svg+xml" /> SVG</label>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="primary" type="button" id="preview-btn">미리보기</button>
+          <button class="ghost" type="button" id="sample-btn">예시 넣기</button>
+          <button class="ghost" type="button" id="file-btn">파일에서 읽기</button>
+          <input type="file" id="file-in" accept="image/*" hidden />
+          <button class="ghost" type="button" id="clear-btn">비우기</button>
+        </div>
+
+        <p class="status" id="status" aria-live="polite">문자열을 붙이고 미리보기를 누르세요.</p>
+
+        <div class="preview-layout" id="preview-layout" hidden>
+          <div class="preview-frame">
+            <p class="preview-kicker">미리보기</p>
+            <div class="preview-stage" id="preview-stage">
+              <img id="preview-img" alt="붙여 넣은 Base64 이미지 미리보기" />
+            </div>
+          </div>
+
+          <div class="meta-grid" id="meta-grid">
+            <div class="meta-card">
+              <p class="meta-kicker">가로 × 세로</p>
+              <p class="meta-value" id="meta-size">—</p>
+            </div>
+            <div class="meta-card">
+              <p class="meta-kicker">MIME 형식</p>
+              <p class="meta-value" id="meta-mime">—</p>
+            </div>
+            <div class="meta-card">
+              <p class="meta-kicker">대략 용량</p>
+              <p class="meta-value" id="meta-bytes">—</p>
+            </div>
+            <div class="meta-card">
+              <p class="meta-kicker">화면 비율</p>
+              <p class="meta-value" id="meta-ratio">—</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="foot">© kswany · 입력값은 이 브라우저에서만 처리됩니다</footer>
+    </div>
+    <script src="preview.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>
