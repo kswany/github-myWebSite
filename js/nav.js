@@ -35,6 +35,7 @@
     { slug: "timezone-compare", label: "타임존" },
     { slug: "line-break-clean", label: "줄바꿈 정리" },
     { slug: "data-url-preview", label: "Base64 이미지" },
+    { slug: "percent-calc", label: "퍼센트" },
   ];
 
   function experimentHref(slug) {
