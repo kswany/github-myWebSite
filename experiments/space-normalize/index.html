@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>띄어쓰기 정리 — kswany</title>
+    <meta name="description" content="연속 공백·탭을 하나로 줄이고 문단 줄바꿈은 그대로 둡니다. 브라우저에서만 실행됩니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="space.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">SPACE</div>
+        <h1>띄어쓰기 정리</h1>
+        <p>복사한 글 안의 연속 공백·탭을 하나로 줄입니다. 문단 사이 빈 줄은 그대로 두고, 줄 단위로만 정리합니다.</p>
+      </section>
+
+      <section class="panel">
+        <fieldset class="opt-fieldset">
+          <legend>정리 옵션</legend>
+          <div class="opt-grid">
+            <label class="opt-chip">
+              <input type="checkbox" id="opt-collapse" checked />
+              <span>연속 공백·탭을 한 칸으로</span>
+            </label>
+            <label class="opt-chip">
+              <input type="checkbox" id="opt-tabs" checked />
+              <span>탭을 공백으로 바꾸기</span>
+            </label>
+            <label class="opt-chip">
+              <input type="checkbox" id="opt-nbsp" checked />
+              <span>특수 공백도 일반 공백으로</span>
+            </label>
+            <label class="opt-chip">
+              <input type="checkbox" id="opt-trim-line" checked />
+              <span>각 줄 앞·뒤 공백 지우기</span>
+            </label>
+            <label class="opt-chip">
+              <input type="checkbox" id="opt-live" checked />
+              <span>입력할 때마다 바로 반영</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="split-grid">
+          <label class="field">
+            <span>원본</span>
+            <textarea id="text-in" rows="11" placeholder="여기에 글을 붙여 넣으세요"></textarea>
+          </label>
+          <label class="field">
+            <span>정리 결과</span>
+            <textarea id="text-out" rows="11" readonly placeholder="정리하기를 누르거나 입력하면 여기에 나옵니다"></textarea>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="primary" type="button" id="clean-btn">정리하기</button>
+          <button class="ghost" type="button" id="copy-btn" disabled>결과 복사</button>
+          <button class="ghost" type="button" id="swap-btn">결과를 원본으로</button>
+          <button class="ghost" type="button" id="sample-btn">예시 넣기</button>
+          <button class="ghost" type="button" id="clear-btn">비우기</button>
+        </div>
+
+        <p class="hint" id="stat-hint" aria-live="polite">공백 칸 수 · 줄 수가 정리 전후로 표시됩니다.</p>
+      </section>
+
+      <footer class="foot">© kswany · 입력값은 이 브라우저에서만 처리됩니다</footer>
+    </div>
+    <script src="space.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>

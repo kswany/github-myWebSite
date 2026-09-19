@@ -36,6 +36,7 @@
     { slug: "line-break-clean", label: "줄바꿈 정리" },
     { slug: "data-url-preview", label: "Base64 이미지" },
     { slug: "percent-calc", label: "퍼센트" },
+    { slug: "space-normalize", label: "띄어쓰기" },
   ];
 
   function experimentHref(slug) {
