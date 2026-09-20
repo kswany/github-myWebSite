@@ -37,6 +37,7 @@
     { slug: "data-url-preview", label: "Base64 이미지" },
     { slug: "percent-calc", label: "퍼센트" },
     { slug: "space-normalize", label: "띄어쓰기" },
+    { slug: "discount-calc", label: "할인 역산" },
   ];
 
   function experimentHref(slug) {
