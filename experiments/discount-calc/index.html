@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>할인 역산 — kswany</title>
+    <meta name="description" content="정가와 할인율로 결제 금액·절약액을 계산하고, 할인가에서 정가를 역산합니다. 브라우저에서만 실행됩니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="discount.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">SALE</div>
+        <h1>할인 역산</h1>
+        <p>정가와 할인율로 실제 결제 금액과 아낀 돈을 보거나, 할인가만 알 때 정가를 거꾸로 계산합니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="tab-bar" role="tablist" aria-label="계산 종류">
+          <button class="tab active" type="button" role="tab" id="tab-forward" aria-selected="true" aria-controls="panel-forward">할인 적용</button>
+          <button class="tab" type="button" role="tab" id="tab-reverse" aria-selected="false" aria-controls="panel-reverse">정가 역산</button>
+          <button class="tab" type="button" role="tab" id="tab-rate" aria-selected="false" aria-controls="panel-rate">할인율 구하기</button>
+        </div>
+
+        <div class="tab-panel active" id="panel-forward" role="tabpanel" aria-labelledby="tab-forward">
+          <p class="panel-desc">정가에서 할인율만큼 깎인 뒤 얼마를 내는지, 얼마나 아꼈는지 봅니다.</p>
+          <div class="field-row">
+            <div class="field">
+              <label for="fwd-original">정가 (원)</label>
+              <input type="number" id="fwd-original" inputmode="decimal" step="any" placeholder="89000" />
+            </div>
+            <div class="field">
+              <label for="fwd-pct">할인율 (%)</label>
+              <input type="number" id="fwd-pct" inputmode="decimal" step="any" placeholder="30" min="0" max="100" />
+            </div>
+          </div>
+          <div class="preset-row" id="fwd-presets" aria-label="자주 쓰는 할인율">
+            <button class="preset-btn" type="button" data-pct="10">10%</button>
+            <button class="preset-btn" type="button" data-pct="20">20%</button>
+            <button class="preset-btn" type="button" data-pct="30">30%</button>
+            <button class="preset-btn" type="button" data-pct="50">50%</button>
+          </div>
+          <div class="result-grid">
+            <div class="result-card highlight" id="fwd-pay" aria-live="polite">
+              <p class="result-kicker">결제 금액</p>
+              <p class="result-main">-</p>
+              <p class="result-sub">정가와 할인율을 넣으세요.</p>
+            </div>
+            <div class="result-card save" id="fwd-save" aria-live="polite">
+              <p class="result-kicker">절약</p>
+              <p class="result-main">-</p>
+              <p class="result-sub">할인으로 아낀 금액입니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="panel-reverse" role="tabpanel" aria-labelledby="tab-reverse" hidden>
+          <p class="panel-desc">할인가와 할인율만 알 때, 원래 정가가 얼마였는지 역으로 계산합니다.</p>
+          <div class="field-row">
+            <div class="field">
+              <label for="rev-sale">할인가 (원)</label>
+              <input type="number" id="rev-sale" inputmode="decimal" step="any" placeholder="62300" />
+            </div>
+            <div class="field">
+              <label for="rev-pct">할인율 (%)</label>
+              <input type="number" id="rev-pct" inputmode="decimal" step="any" placeholder="30" min="0" max="99.99" />
+            </div>
+          </div>
+          <div class="result-card highlight" id="rev-result" aria-live="polite">
+            <p class="result-kicker">역산한 정가</p>
+            <p class="result-main">-</p>
+            <p class="result-sub">할인가 ÷ (1 − 할인율÷100)</p>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="panel-rate" role="tabpanel" aria-labelledby="tab-rate" hidden>
+          <p class="panel-desc">정가와 실제 결제 금액(또는 할인가)을 넣으면 할인율이 몇 %인지 봅니다.</p>
+          <div class="field-row">
+            <div class="field">
+              <label for="rate-original">정가 (원)</label>
+              <input type="number" id="rate-original" inputmode="decimal" step="any" placeholder="89000" />
+            </div>
+            <div class="field">
+              <label for="rate-sale">할인가 (원)</label>
+              <input type="number" id="rate-sale" inputmode="decimal" step="any" placeholder="62300" />
+            </div>
+          </div>
+          <div class="result-card highlight" id="rate-result" aria-live="polite">
+            <p class="result-kicker">할인율</p>
+            <p class="result-main">-</p>
+            <p class="result-sub">정가와 할인가를 넣으세요.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="foot">© kswany · 계산은 방문자의 브라우저에서만 이뤄집니다</footer>
+    </div>
+    <script src="discount.js"></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>
