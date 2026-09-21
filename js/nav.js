@@ -38,6 +38,7 @@
     { slug: "percent-calc", label: "퍼센트" },
     { slug: "space-normalize", label: "띄어쓰기" },
     { slug: "discount-calc", label: "할인 역산" },
+    { slug: "exif-orient", label: "사진 방향" },
   ];
 
   function experimentHref(slug) {
