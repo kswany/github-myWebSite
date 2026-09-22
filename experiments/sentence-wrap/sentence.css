@@ -1,0 +1,156 @@
+.control-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 14px 20px;
+  margin-bottom: 18px;
+}
+
+.field-inline {
+  flex: 1 1 220px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 8px 12px;
+  align-items: center;
+}
+
+.field-inline span {
+  grid-column: 1 / -1;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.field-inline input[type="range"] {
+  width: 100%;
+  accent-color: var(--cinnabar);
+}
+
+.field-inline strong {
+  font-size: 1.1rem;
+  color: var(--ink);
+  min-width: 2ch;
+}
+
+.preset-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.preset {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: transform var(--ease), box-shadow var(--ease), color var(--ease);
+}
+
+.preset:hover,
+.preset.active {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
+  color: var(--ink);
+}
+
+.preset.active {
+  background: var(--cinnabar);
+  color: #fff;
+}
+
+.opt-fieldset {
+  margin: 0 0 18px;
+  padding: 0;
+  border: none;
+}
+
+.opt-fieldset legend {
+  margin-bottom: 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.opt-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.opt-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform var(--ease), box-shadow var(--ease);
+  user-select: none;
+}
+
+.opt-chip:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
+}
+
+.opt-chip input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--cinnabar);
+}
+
+.split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.field span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+#text-in,
+#text-out {
+  min-height: 200px;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+#text-out {
+  background: #f8fafc;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 12px;
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 720px) {
+  .split-grid {
+    grid-template-columns: 1fr;
+  }
+}

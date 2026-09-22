@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>문장 길이 나누기 — kswany</title>
+    <meta name="description" content="긴 문장을 읽기 좋은 길이로 자동 줄바꿈합니다. SNS·카드뉴스·발표 자막에 쓰기 좋습니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="sentence.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">WRAP</div>
+        <h1>문장 길이 나누기</h1>
+        <p>한 줄에 너무 길게 이어진 글을 목표 글자 수에 맞춰 줄바꿈합니다. 공백·마침표를 우선으로 끊어 읽기 편하게 만듭니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="control-row">
+          <label class="field-inline" for="max-len">
+            <span>한 줄 목표 글자 수</span>
+            <input type="range" id="max-len" min="12" max="60" value="32" />
+            <strong id="max-len-val">32</strong>자
+          </label>
+          <div class="preset-row" role="group" aria-label="빠른 길이">
+            <button class="preset" type="button" data-len="24" aria-pressed="false">24자</button>
+            <button class="preset active" type="button" data-len="32" aria-pressed="true">32자</button>
+            <button class="preset" type="button" data-len="40" aria-pressed="false">40자</button>
+          </div>
+        </div>
+
+        <fieldset class="opt-fieldset">
+          <legend>나누기 방식</legend>
+          <div class="opt-grid">
+            <label class="opt-chip">
+              <input type="checkbox" id="opt-space" checked />
+              <span>공백에서 끊기 우선</span>
+            </label>
+            <label class="opt-chip">
+              <input type="checkbox" id="opt-punct" checked />
+              <span>마침표·물음표 뒤에서 끊기</span>
+            </label>
+            <label class="opt-chip">
+              <input type="checkbox" id="opt-keep-para" checked />
+              <span>빈 줄(문단)은 그대로</span>
+            </label>
+            <label class="opt-chip">
+              <input type="checkbox" id="opt-live" checked />
+              <span>입력할 때마다 바로 반영</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="split-grid">
+          <label class="field">
+            <span>원본</span>
+            <textarea id="text-in" rows="11" placeholder="긴 문장이 한 줄로 이어진 글을 붙여 넣으세요"></textarea>
+          </label>
+          <label class="field">
+            <span>나눈 결과</span>
+            <textarea id="text-out" rows="11" readonly placeholder="나누기를 누르거나 입력하면 여기에 나옵니다"></textarea>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="primary" type="button" id="wrap-btn">나누기</button>
+          <button class="ghost" type="button" id="copy-btn" disabled>결과 복사</button>
+          <button class="ghost" type="button" id="swap-btn">결과를 원본으로</button>
+          <button class="ghost" type="button" id="sample-btn">예시 넣기</button>
+          <button class="ghost" type="button" id="clear-btn">비우기</button>
+        </div>
+
+        <p class="hint" id="stat-hint" aria-live="polite">줄 수 · 가장 긴 줄 글자 수가 표시됩니다.</p>
+      </section>
+
+      <footer class="foot">© kswany · 입력값은 이 브라우저에서만 처리됩니다</footer>
+    </div>
+    <script src="sentence.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>
