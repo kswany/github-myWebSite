@@ -40,6 +40,7 @@
     { slug: "discount-calc", label: "할인 역산" },
     { slug: "exif-orient", label: "사진 방향" },
     { slug: "sentence-wrap", label: "문장 나누기" },
+    { slug: "calorie-calc", label: "칼로리" },
   ];
 
   function experimentHref(slug) {
