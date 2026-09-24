@@ -41,6 +41,7 @@
     { slug: "exif-orient", label: "사진 방향" },
     { slug: "sentence-wrap", label: "문장 나누기" },
     { slug: "calorie-calc", label: "칼로리" },
+    { slug: "water-reminder", label: "물 마시기" },
   ];
 
   function experimentHref(slug) {

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>물 마시기 알림 — kswany</title>
+    <meta name="description" content="하루 목표 잔 수와 알림 간격을 정해 물 마시기를 기록합니다. 브라우저에서만 동작합니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="water.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">H2O</div>
+        <h1>물 마시기 알림</h1>
+        <p>하루 목표 잔 수와 알림 간격을 정해 두면, 타이머가 끝날 때 화면과 소리로 알려 줍니다. 잔을 눌러 마신 기록을 남기세요.</p>
+      </section>
+
+      <section class="panel">
+        <div class="settings-row">
+          <label class="field-block" for="goal-cups">
+            <span>하루 목표 (잔)</span>
+            <div class="field-control">
+              <input type="range" id="goal-cups" min="4" max="16" step="1" value="8" />
+              <strong id="goal-cups-val">8</strong>
+            </div>
+          </label>
+          <label class="field-block" for="interval-min">
+            <span>알림 간격 (분)</span>
+            <div class="field-control">
+              <input type="range" id="interval-min" min="15" max="120" step="15" value="60" />
+              <strong id="interval-min-val">60</strong>
+            </div>
+          </label>
+        </div>
+
+        <div class="preset-row" role="group" aria-label="간격 프리셋">
+          <button class="preset" type="button" data-interval="30">30분</button>
+          <button class="preset active" type="button" data-interval="60">1시간</button>
+          <button class="preset" type="button" data-interval="90">90분</button>
+          <button class="preset" type="button" data-interval="120">2시간</button>
+        </div>
+
+        <div class="timer-card" aria-live="polite">
+          <p class="result-kicker">다음 알림까지</p>
+          <p class="timer-main" id="countdown">—</p>
+          <p class="timer-sub" id="timer-status">아래에서 알림을 켜면 타이머가 시작됩니다.</p>
+          <div class="timer-actions">
+            <button class="primary-btn" type="button" id="toggle-timer">알림 켜기</button>
+            <button class="ghost-btn" type="button" id="reset-timer">지금부터 다시</button>
+          </div>
+        </div>
+
+        <div class="progress-head">
+          <p class="section-title">오늘 마신 물</p>
+          <p class="progress-count"><span id="drunk-count">0</span> / <span id="goal-display">8</span> 잔</p>
+        </div>
+        <div class="cup-grid" id="cup-grid" role="list" aria-label="잔 목록"></div>
+        <div class="cup-actions">
+          <button class="secondary-btn" type="button" id="add-cup">+ 한 잔 더</button>
+          <button class="ghost-btn" type="button" id="undo-cup">한 잔 취소</button>
+          <button class="ghost-btn" type="button" id="reset-day">오늘 기록 지우기</button>
+        </div>
+
+        <p class="fine-print">알림은 이 탭이 열려 있을 때 가장 잘 동작합니다. 브라우저 알림을 허용하면 탭이 뒤에 있어도 알림을 받을 수 있습니다. 설정과 오늘 기록은 이 기기의 브라우저에만 저장됩니다.</p>
+      </section>
+
+      <footer class="foot">© kswany · 실험은 방문자의 브라우저에서만 실행됩니다</footer>
+    </div>
+    <script src="water.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+  </body>
+</html>
