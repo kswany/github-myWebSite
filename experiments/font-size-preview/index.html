@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>글자 크기 미리보기 — kswany</title>
+    <meta name="description" content="본문 글자 크기와 줄 너비를 바꿔 가며 한 줄에 몇 글자인지, 읽기 체감을 미리 봅니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="font.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">Aa</div>
+        <h1>글자 크기 미리보기</h1>
+        <p>글자 크기(px·rem)와 본문 너비를 움직이면 한 줄 길이와 줄 수를 바로 확인할 수 있습니다. 입력은 브라우저에만 남습니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="preset-row" role="group" aria-label="글자 크기 프리셋">
+          <button class="preset" type="button" data-px="14">작은 본문 14px</button>
+          <button class="preset active" type="button" data-px="16">본문 16px</button>
+          <button class="preset" type="button" data-px="18">큰 본문 18px</button>
+          <button class="preset" type="button" data-px="20">소제목 20px</button>
+        </div>
+
+        <div class="settings-row">
+          <label class="field-block" for="font-px">
+            <span>글자 크기</span>
+            <div class="field-control">
+              <input type="range" id="font-px" min="12" max="28" step="1" value="16" />
+              <strong id="font-px-val">16px</strong>
+            </div>
+            <p class="hint" id="font-rem-hint">1rem (기준 16px)</p>
+          </label>
+          <label class="field-block" for="box-width">
+            <span>본문 너비</span>
+            <div class="field-control">
+              <input type="range" id="box-width" min="280" max="720" step="10" value="360" />
+              <strong id="box-width-val">360px</strong>
+            </div>
+          </label>
+          <label class="field-block" for="line-height">
+            <span>줄 간격</span>
+            <div class="field-control">
+              <input type="range" id="line-height" min="130" max="220" step="5" value="165" />
+              <strong id="line-height-val">1.65</strong>
+            </div>
+          </label>
+        </div>
+
+        <div class="width-presets" role="group" aria-label="너비 프리셋">
+          <button class="width-chip" type="button" data-w="320">좁은 폰</button>
+          <button class="width-chip active" type="button" data-w="360">일반 폰</button>
+          <button class="width-chip" type="button" data-w="480">넓은 폰</button>
+          <button class="width-chip" type="button" data-w="640">태블릿</button>
+        </div>
+
+        <label class="field">
+          <span>미리볼 글 (직접 수정 가능)</span>
+          <textarea id="sample-text" rows="5">블로그나 공지 본문은 너무 작으면 눈이 아프고, 줄이 너무 길면 다음 줄을 찾기 어렵습니다. 글자 크기와 줄 너비를 맞추면 읽기가 한결 편해집니다.</textarea>
+        </label>
+
+        <div class="stat-grid" aria-live="polite">
+          <div class="stat-card">
+            <p class="stat-label">한 줄 평균</p>
+            <p class="stat-value"><span id="stat-cpl">—</span> 글자</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">총 줄 수</p>
+            <p class="stat-value"><span id="stat-lines">—</span> 줄</p>
+          </div>
+          <div class="stat-card wide">
+            <p class="stat-label">체감</p>
+            <p class="stat-value soft" id="stat-feel">—</p>
+          </div>
+        </div>
+
+        <div class="preview-shell">
+          <p class="preview-kicker">미리보기</p>
+          <div class="preview-ruler" id="preview-ruler" aria-hidden="true"></div>
+          <article class="preview-box" id="preview-box">
+            <p id="preview-text"></p>
+          </article>
+        </div>
+      </section>
+
+      <footer class="foot">© kswany · 실험은 방문자의 브라우저에서만 실행됩니다</footer>
+    </div>
+    <script src="font.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>

@@ -42,6 +42,7 @@
     { slug: "sentence-wrap", label: "문장 나누기" },
     { slug: "calorie-calc", label: "칼로리" },
     { slug: "water-reminder", label: "물 마시기" },
+    { slug: "font-size-preview", label: "글자 크기" },
   ];
 
   function experimentHref(slug) {
