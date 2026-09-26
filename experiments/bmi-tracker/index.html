@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BMI·체중 변화 — kswany</title>
+    <meta name="description" content="키와 몸무게로 BMI를 보고, 목표 체중까지 대략 몇 주 걸릴지 추정합니다. 브라우저에서만 계산됩니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="bmi.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">BMI</div>
+        <h1>BMI·체중 변화</h1>
+        <p>키와 몸무게로 BMI를 계산하고, 목표 체중까지 주당 변화량을 기준으로 대략 기간을 추정합니다. 건강 관리는 참고용이며 전문가 상담을 대신하지 않습니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="input-grid">
+          <label class="field-block" for="height-cm">
+            <span>키 (cm)</span>
+            <div class="field-control">
+              <input type="range" id="height-cm" min="130" max="210" step="1" value="170" />
+              <input type="number" id="height-num" min="130" max="210" step="1" value="170" aria-label="키 cm 숫자 입력" />
+            </div>
+          </label>
+          <label class="field-block" for="weight-kg">
+            <span>지금 몸무게 (kg)</span>
+            <div class="field-control">
+              <input type="range" id="weight-kg" min="35" max="150" step="0.1" value="68" />
+              <input type="number" id="weight-num" min="35" max="150" step="0.1" value="68" aria-label="몸무게 kg 숫자 입력" />
+            </div>
+          </label>
+          <label class="field-block" for="target-kg">
+            <span>목표 몸무게 (kg)</span>
+            <div class="field-control">
+              <input type="range" id="target-kg" min="35" max="150" step="0.1" value="62" />
+              <input type="number" id="target-num" min="35" max="150" step="0.1" value="62" aria-label="목표 kg 숫자 입력" />
+            </div>
+          </label>
+        </div>
+
+        <div class="result-card" aria-live="polite">
+          <p class="result-kicker">지금 BMI</p>
+          <p class="bmi-main"><span id="bmi-value">—</span></p>
+          <p class="bmi-label" id="bmi-label">키와 몸무게를 입력하세요.</p>
+          <div class="bmi-bar" aria-hidden="true">
+            <div class="bmi-bar-fill" id="bmi-bar-fill"></div>
+          </div>
+          <p class="bmi-range-hint">한국 기준 참고: 18.5 미만 저체중 · 18.5~23 정상 · 23~25 과체중 · 25 이상 비만</p>
+        </div>
+
+        <div class="goal-card">
+          <div class="goal-head">
+            <p class="section-title">목표까지</p>
+            <p class="goal-diff" id="goal-diff">—</p>
+          </div>
+          <label class="field-inline" for="weekly-rate">
+            <span>주당 변화 (kg)</span>
+            <input type="range" id="weekly-rate" min="0.2" max="1" step="0.1" value="0.5" />
+            <strong id="weekly-rate-val">0.5</strong>
+          </label>
+          <div class="preset-row" role="group" aria-label="주당 변화 프리셋">
+            <button class="preset" type="button" data-rate="0.3">0.3 (느리게)</button>
+            <button class="preset active" type="button" data-rate="0.5">0.5 (보통)</button>
+            <button class="preset" type="button" data-rate="0.7">0.7 (빠르게)</button>
+          </div>
+          <p class="eta-main" id="eta-text">목표와 지금 체중이 같으면 기간이 필요 없습니다.</p>
+          <p class="eta-sub" id="eta-date"></p>
+        </div>
+
+        <div class="log-section">
+          <div class="log-head">
+            <h2 class="section-title">체중 기록</h2>
+            <button class="ghost-btn" type="button" id="clear-log">기록 지우기</button>
+          </div>
+          <p class="log-hint">오늘 재본 몸무게를 저장해 두면 최근 추이를 볼 수 있습니다.</p>
+          <div class="log-actions">
+            <button class="primary-btn" type="button" id="save-weight">오늘 몸무게 저장</button>
+          </div>
+          <ul class="log-list" id="log-list" aria-label="체중 기록 목록">
+            <li class="log-empty" id="log-empty">아직 저장한 기록이 없습니다.</li>
+          </ul>
+        </div>
+
+        <p class="fine-print">BMI와 기간은 단순 계산식입니다. 임신·성장기·근육량 등은 반영되지 않습니다.</p>
+      </section>
+
+      <footer class="foot">© kswany · 실험은 방문자의 브라우저에서만 실행됩니다</footer>
+    </div>
+    <script src="bmi.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+  </body>
+</html>

@@ -43,6 +43,7 @@
     { slug: "calorie-calc", label: "칼로리" },
     { slug: "water-reminder", label: "물 마시기" },
     { slug: "font-size-preview", label: "글자 크기" },
+    { slug: "bmi-tracker", label: "BMI" },
   ];
 
   function experimentHref(slug) {
