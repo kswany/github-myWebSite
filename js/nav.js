@@ -44,6 +44,7 @@
     { slug: "water-reminder", label: "물 마시기" },
     { slug: "font-size-preview", label: "글자 크기" },
     { slug: "bmi-tracker", label: "BMI" },
+    { slug: "focus-timer", label: "집중 타이머" },
   ];
 
   function experimentHref(slug) {

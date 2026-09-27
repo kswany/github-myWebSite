@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>집중 타이머 — kswany</title>
+    <meta name="description" content="25분 집중·5분 휴식 포모도로 타이머. 브라우저에서만 동작합니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="focus.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">FOCUS</div>
+        <h1>집중 타이머</h1>
+        <p>25분 집중과 5분 휴식을 번갈아 돌립니다. 시작을 누르면 남은 시간이 줄어들고, 끝나면 소리로 알려 줍니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="mode-tabs" role="tablist" aria-label="타이머 모드">
+          <button class="mode-tab active" type="button" role="tab" aria-selected="true" data-mode="work" id="tab-work">집중</button>
+          <button class="mode-tab" type="button" role="tab" aria-selected="false" data-mode="break" id="tab-break">휴식</button>
+        </div>
+
+        <div class="timer-stage" id="timer-stage" data-mode="work">
+          <div class="ring-wrap" aria-hidden="true">
+            <svg class="ring" viewBox="0 0 120 120">
+              <circle class="ring-bg" cx="60" cy="60" r="52" />
+              <circle class="ring-progress" id="ring-progress" cx="60" cy="60" r="52" />
+            </svg>
+          </div>
+          <p class="phase-label" id="phase-label">집중 시간</p>
+          <p class="time-main" id="time-main" aria-live="polite">25:00</p>
+          <p class="time-sub" id="time-sub">시작을 누르면 타이머가 돌아갑니다.</p>
+        </div>
+
+        <div class="timer-actions">
+          <button class="primary-btn" type="button" id="btn-toggle">시작</button>
+          <button class="secondary-btn" type="button" id="btn-skip">다음 단계</button>
+          <button class="ghost-btn" type="button" id="btn-reset">처음으로</button>
+        </div>
+
+        <div class="settings-row">
+          <label class="field-block" for="work-min">
+            <span>집중 (분)</span>
+            <div class="field-control">
+              <input type="range" id="work-min" min="5" max="60" step="5" value="25" />
+              <strong id="work-min-val">25</strong>
+            </div>
+          </label>
+          <label class="field-block" for="break-min">
+            <span>휴식 (분)</span>
+            <div class="field-control">
+              <input type="range" id="break-min" min="3" max="20" step="1" value="5" />
+              <strong id="break-min-val">5</strong>
+            </div>
+          </label>
+        </div>
+
+        <label class="sound-toggle">
+          <input type="checkbox" id="sound-on" checked />
+          <span>끝날 때 짧은 소리</span>
+        </label>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <span class="stat-label">오늘 완료한 집중</span>
+            <strong id="stat-today">0</strong>
+            <span class="stat-unit">회</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">이번 주 합계</span>
+            <strong id="stat-week">0</strong>
+            <span class="stat-unit">회</span>
+          </div>
+        </div>
+
+        <p class="fine-print">타이머는 이 탭이 열려 있을 때 가장 정확합니다. 설정과 기록은 이 브라우저에만 저장됩니다.</p>
+      </section>
+
+      <footer class="foot">© kswany · 실험은 방문자의 브라우저에서만 실행됩니다</footer>
+    </div>
+    <script src="focus.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>
