@@ -45,6 +45,7 @@
     { slug: "font-size-preview", label: "글자 크기" },
     { slug: "bmi-tracker", label: "BMI" },
     { slug: "focus-timer", label: "집중 타이머" },
+    { slug: "todo-priority", label: "할 일 순위" },
   ];
 
   function experimentHref(slug) {
