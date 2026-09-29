@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>수면 시간 계산 — kswany</title>
+    <meta name="description" content="잠든 시각과 일어난 시각으로 수면 길이를 보거나, 기상 시각에 맞춘 취침 후보를 90분 주기로 계산합니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="sleep.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">SLEEP</div>
+        <h1>수면 시간 계산</h1>
+        <p>어제 잠든 시각과 오늘 일어난 시각으로 몇 시간 잤는지 보거나, 내일 몇 시에 일어날지 정했을 때 언제 자면 좋을지 90분 주기로 추천합니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="mode-tabs" role="tablist" aria-label="계산 방식">
+          <button class="mode-tab active" type="button" role="tab" aria-selected="true" data-mode="duration" id="tab-duration">잔 수면 길이</button>
+          <button class="mode-tab" type="button" role="tab" aria-selected="false" data-mode="cycles" id="tab-cycles">취침 시각 추천</button>
+        </div>
+
+        <div class="mode-panel" id="panel-duration" role="tabpanel" aria-labelledby="tab-duration">
+          <p class="panel-desc">잠든 시각과 일어난 시각을 고르면 수면 시간과 대략적인 권장 범위(7~9시간)와 비교해 안내합니다.</p>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="bed-time">잠든 시각</label>
+              <input type="time" id="bed-time" />
+            </div>
+            <div class="field">
+              <label for="wake-time">일어난 시각</label>
+              <input type="time" id="wake-time" />
+            </div>
+          </div>
+
+          <div class="preset-row" aria-label="예시">
+            <button class="preset" type="button" data-preset-bed="23:30" data-preset-wake="07:00">23:30 ~ 07:00</button>
+            <button class="preset" type="button" data-preset-bed="00:30" data-preset-wake="07:30">00:30 ~ 07:30</button>
+            <button class="preset" type="button" data-preset-bed="01:00" data-preset-wake="08:00">01:00 ~ 08:00</button>
+          </div>
+
+          <div class="result-hero" id="duration-hero" aria-live="polite">
+            <p class="result-kicker" id="duration-kicker">시각을 고르세요</p>
+            <p class="result-main" id="duration-main">-</p>
+            <p class="result-sub" id="duration-sub">잠든 시각과 일어난 시각을 넣으면 수면 길이를 계산합니다.</p>
+          </div>
+        </div>
+
+        <div class="mode-panel" id="panel-cycles" role="tabpanel" aria-labelledby="tab-cycles" hidden>
+          <p class="panel-desc">기상 시각을 정하면, 잠들기까지 15분과 90분 수면 주기를 더해 취침 후보를 보여 줍니다. 가운데 줄이 7시간 30분(5주기) 근처로 많이 쓰입니다.</p>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="target-wake">일어날 시각</label>
+              <input type="time" id="target-wake" />
+            </div>
+          </div>
+
+          <div class="preset-row" aria-label="기상 예시">
+            <button class="preset" type="button" data-preset-wake="06:30">06:30 기상</button>
+            <button class="preset" type="button" data-preset-wake="07:00">07:00 기상</button>
+            <button class="preset" type="button" data-preset-wake="08:00">08:00 기상</button>
+          </div>
+
+          <ul class="cycle-list" id="cycle-list"></ul>
+        </div>
+
+        <p class="fine-print">의학적 진단이 아닌 참고용 계산입니다. 개인마다 잠드는 시간과 주기는 다를 수 있어요.</p>
+      </section>
+
+      <footer class="foot">© kswany · 실험은 방문자의 브라우저에서만 실행됩니다</footer>
+    </div>
+    <script src="sleep.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>

@@ -46,6 +46,7 @@
     { slug: "bmi-tracker", label: "BMI" },
     { slug: "focus-timer", label: "집중 타이머" },
     { slug: "todo-priority", label: "할 일 순위" },
+    { slug: "sleep-calc", label: "수면 계산" },
   ];
 
   function experimentHref(slug) {
