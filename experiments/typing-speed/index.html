@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>타이핑 속도 연습 — kswany</title>
+    <meta name="description" content="30초 동안 주어진 문장을 따라 치며 분당 타수와 정확도를 확인하는 연습 페이지입니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="typing.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">TYPE</div>
+        <h1>타이핑 속도 연습</h1>
+        <p>30초 동안 아래 문장을 그대로 따라 치세요. 분당 타수(글자 수 기준)와 정확도가 바로 나옵니다. 최근 기록은 이 브라우저에만 저장됩니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="score-grid">
+          <div class="score-box">
+            <span class="label">남은 시간</span>
+            <strong id="stat-time">30</strong>
+          </div>
+          <div class="score-box">
+            <span class="label">정확도</span>
+            <strong id="stat-acc">-</strong>
+          </div>
+          <div class="score-box">
+            <span class="label">분당 타수</span>
+            <strong id="stat-cpm">-</strong>
+          </div>
+        </div>
+
+        <div class="target-wrap" aria-label="따라 칠 문장">
+          <p class="target-label">따라 칠 문장</p>
+          <p class="target-text" id="target-text" aria-live="polite"></p>
+        </div>
+
+        <div class="field">
+          <label for="typing-input">입력</label>
+          <textarea id="typing-input" rows="3" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="시작하기를 누른 뒤 여기에 입력하세요" disabled></textarea>
+        </div>
+
+        <div class="action-row">
+          <button class="btn primary" type="button" id="btn-start">30초 시작하기</button>
+          <button class="btn ghost" type="button" id="btn-skip" disabled>다른 문장</button>
+        </div>
+
+        <div class="result-hero" id="result-hero" hidden aria-live="polite">
+          <p class="result-kicker" id="result-kicker">연습 끝</p>
+          <p class="result-main" id="result-main">-</p>
+          <p class="result-sub" id="result-sub"></p>
+        </div>
+
+        <div class="history" id="history-block" hidden>
+          <h2 class="history-title">최근 5번</h2>
+          <ul class="history-list" id="history-list"></ul>
+        </div>
+      </section>
+
+      <footer class="foot">© kswany · 타이핑은 방문자의 브라우저에서만 실행됩니다</footer>
+    </div>
+    <script src="../../js/nav.js" defer></script>
+    <script src="typing.js" defer></script>
+  </body>
+</html>
