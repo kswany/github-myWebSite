@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>오늘 날씨 체감 — kswany</title>
+    <meta name="description" content="도시를 고르면 계절과 시간대에 맞춘 체감 온도, 옷차림, 우산 힌트를 보여 줍니다. 외부 날씨 API 없이 브라우저에서만 계산합니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="weather.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">FEEL</div>
+        <h1>오늘 날씨 체감</h1>
+        <p>실시간 기상 데이터는 쓰지 않습니다. 오늘 날짜·시각과 도시 특성으로 <strong>대략적인 체감</strong>과 옷·우산 힌트를 보여 줍니다. 출근 전에 “이 정도면 뭐 입지?” 할 때 참고용이에요.</p>
+      </section>
+
+      <section class="panel">
+        <div class="field">
+          <label for="city-input">도시 이름</label>
+          <input type="text" id="city-input" placeholder="예: 서울, 부산, 제주" autocomplete="off" maxlength="20" />
+        </div>
+
+        <div class="preset-row" aria-label="도시 빠른 선택">
+          <button class="preset" type="button" data-city="서울">서울</button>
+          <button class="preset" type="button" data-city="인천">인천</button>
+          <button class="preset" type="button" data-city="대전">대전</button>
+          <button class="preset" type="button" data-city="대구">대구</button>
+          <button class="preset" type="button" data-city="광주">광주</button>
+          <button class="preset" type="button" data-city="부산">부산</button>
+          <button class="preset" type="button" data-city="울산">울산</button>
+          <button class="preset" type="button" data-city="제주">제주</button>
+          <button class="preset" type="button" data-city="춘천">춘천</button>
+          <button class="preset" type="button" data-city="강릉">강릉</button>
+        </div>
+
+        <div class="context-strip" id="context-strip" aria-live="polite"></div>
+
+        <div class="result-hero" id="result-hero">
+          <p class="result-kicker" id="result-kicker">도시를 고르거나 입력하세요</p>
+          <p class="result-main" id="result-main">—</p>
+          <p class="result-sub" id="result-sub">위 버튼을 누르거나 도시 이름을 적으면 체감 안내가 나옵니다.</p>
+        </div>
+
+        <ul class="hint-list" id="hint-list"></ul>
+
+        <p class="fine-print">실제 기온·강수와 다를 수 있습니다. 외부 API를 사용하지 않는 참고용입니다.</p>
+      </section>
+
+      <footer class="foot">© kswany · 실험은 방문자의 브라우저에서만 실행됩니다</footer>
+    </div>
+    <script src="weather.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>
