@@ -49,6 +49,7 @@
     { slug: "sleep-calc", label: "수면 계산" },
     { slug: "typing-speed", label: "타이핑 연습" },
     { slug: "weather-feel", label: "날씨 체감" },
+    { slug: "multi-dday", label: "디데이" },
   ];
 
   function experimentHref(slug) {
