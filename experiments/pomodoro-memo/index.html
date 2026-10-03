@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>뽀모도로 메모 — kswany</title>
+    <meta name="description" content="집중 한 사이클이 끝날 때마다 한 줄 회고를 남기는 포모도로 타이머. 기록은 브라우저에만 저장됩니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="memo.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">MEMO</div>
+        <h1>뽀모도로 메모</h1>
+        <p>집중 시간이 끝나면 한 줄만 적어 두세요. 무엇을 했는지, 기분은 어땠는지 짧게 남기면 하루가 쌓입니다.</p>
+      </section>
+
+      <section class="panel">
+        <div class="mode-tabs" role="tablist" aria-label="타이머 모드">
+          <button class="mode-tab active" type="button" role="tab" aria-selected="true" data-mode="work" id="tab-work">집중</button>
+          <button class="mode-tab" type="button" role="tab" aria-selected="false" data-mode="break" id="tab-break">휴식</button>
+        </div>
+
+        <div class="timer-stage" id="timer-stage" data-mode="work">
+          <div class="ring-wrap" aria-hidden="true">
+            <svg class="ring" viewBox="0 0 120 120">
+              <circle class="ring-bg" cx="60" cy="60" r="52" />
+              <circle class="ring-progress" id="ring-progress" cx="60" cy="60" r="52" />
+            </svg>
+          </div>
+          <p class="phase-label" id="phase-label">집중 시간</p>
+          <p class="time-main" id="time-main" aria-live="polite">25:00</p>
+          <p class="time-sub" id="time-sub">시작을 누르면 타이머가 돌아갑니다.</p>
+        </div>
+
+        <div class="timer-actions">
+          <button class="primary-btn" type="button" id="btn-toggle">시작</button>
+          <button class="ghost-btn" type="button" id="btn-skip">건너뛰기</button>
+          <button class="ghost-btn" type="button" id="btn-reset">처음으로</button>
+        </div>
+
+        <div class="settings-row">
+          <label class="field-block">
+            <span>집중(분)</span>
+            <div class="field-control">
+              <input type="range" id="work-min" min="5" max="45" step="1" value="25" />
+              <strong id="work-min-val">25</strong>
+            </div>
+          </label>
+          <label class="field-block">
+            <span>휴식(분)</span>
+            <div class="field-control">
+              <input type="range" id="break-min" min="3" max="15" step="1" value="5" />
+              <strong id="break-min-val">5</strong>
+            </div>
+          </label>
+        </div>
+
+        <label class="sound-toggle">
+          <input type="checkbox" id="sound-on" checked />
+          끝날 때 짧은 소리
+        </label>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <span class="stat-label">오늘 사이클</span>
+            <strong id="stat-today">0</strong>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">오늘 메모</span>
+            <strong id="stat-memos">0</strong>
+          </div>
+        </div>
+
+        <h2 class="section-title">오늘 회고</h2>
+        <ul class="memo-list" id="memo-list" aria-label="오늘 남긴 메모"></ul>
+        <p class="empty-msg" id="memo-empty">아직 메모가 없습니다. 집중이 끝나면 한 줄을 남겨 보세요.</p>
+
+        <p class="fine-print">타이머와 메모는 이 브라우저에만 저장됩니다. 다른 기기와는 공유되지 않습니다.</p>
+      </section>
+
+      <div class="memo-overlay" id="memo-overlay" hidden>
+        <div class="memo-dialog" role="dialog" aria-modal="true" aria-labelledby="memo-dialog-title">
+          <p class="memo-badge" id="memo-badge">집중 1사이클 완료</p>
+          <h2 class="memo-dialog-title" id="memo-dialog-title">이번 사이클, 한 줄 회고</h2>
+          <p class="memo-dialog-hint">무엇에 집중했는지, 다음에 이어갈 한 가지만 적어도 됩니다.</p>
+          <label class="sr-only" for="memo-input">회고 한 줄</label>
+          <textarea id="memo-input" rows="3" maxlength="120" placeholder="예: 보고서 초안 2페이지까지 썼다"></textarea>
+          <p class="char-count"><span id="memo-char">0</span> / 120</p>
+          <div class="memo-dialog-actions">
+            <button class="primary-btn" type="button" id="memo-save">저장하고 휴식</button>
+            <button class="ghost-btn" type="button" id="memo-skip">건너뛰기</button>
+          </div>
+        </div>
+      </div>
+
+      <footer class="foot">© kswany · 실험은 방문자의 브라우저에서만 실행됩니다</footer>
+    </div>
+    <script src="memo.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>
