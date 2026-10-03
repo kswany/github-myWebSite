@@ -45,6 +45,7 @@
     { slug: "font-size-preview", label: "글자 크기" },
     { slug: "bmi-tracker", label: "BMI" },
     { slug: "focus-timer", label: "집중 타이머" },
+    { slug: "pomodoro-memo", label: "뽀모도로 메모" },
     { slug: "todo-priority", label: "할 일 순위" },
     { slug: "sleep-calc", label: "수면 계산" },
     { slug: "typing-speed", label: "타이핑 연습" },
