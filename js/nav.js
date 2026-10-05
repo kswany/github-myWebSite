@@ -52,6 +52,7 @@
     { slug: "weather-feel", label: "날씨 체감" },
     { slug: "multi-dday", label: "디데이" },
     { slug: "daily-spend", label: "지출 한 줄" },
+    { slug: "lunch-pick", label: "점메추" },
   ];
 
   function experimentHref(slug) {

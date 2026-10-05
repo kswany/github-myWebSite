@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>랜덤 점메추 — kswany</title>
+    <meta name="description" content="카테고리만 고르면 점심 메뉴 하나를 뽑아 줍니다. 서버 없이 브라우저에서만 돌아갑니다." />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../../css/site.css" />
+    <link rel="stylesheet" href="lunch.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="topbar">
+        <a class="brand" href="../../">
+          <strong>kswany</strong>
+          <span>게임과 실험</span>
+        </a>
+        <nav class="nav">
+          <a href="../../">홈</a>
+          <a href="../../saju/">사주</a>
+          <a href="../../games/">게임</a>
+          <a href="../" aria-current="page">실험</a>
+          <a href="../../guestbook/">방명록</a>
+        </nav>
+      </header>
+
+      <section class="page-head">
+        <div class="seal">LUNCH</div>
+        <h1>랜덤 점메추</h1>
+        <p>고민할 시간에 버튼 한 번. 카테고리를 고르고 오늘 점심 메뉴를 뽑아 보세요.</p>
+      </section>
+
+      <section class="panel">
+        <p class="field-label" id="cat-label">카테고리</p>
+        <div class="cat-grid" role="group" aria-labelledby="cat-label" id="cat-grid"></div>
+
+        <div class="draw-stage" id="draw-stage" aria-live="polite">
+          <p class="draw-kicker" id="draw-kicker">준비됐어요</p>
+          <p class="draw-value" id="draw-value">?</p>
+          <p class="draw-sub" id="draw-sub">카테고리를 고른 뒤 점메추를 눌러 주세요</p>
+        </div>
+
+        <div class="actions">
+          <button class="primary" type="button" id="draw-btn">점메추!</button>
+          <button class="ghost" type="button" id="reset-btn">처음으로</button>
+        </div>
+
+        <p class="fine-print">메뉴는 예시 목록입니다. 마음에 안 들면 다시 뽑으면 됩니다.</p>
+      </section>
+
+      <footer class="foot">© kswany · 실험은 방문자의 브라우저에서만 실행됩니다</footer>
+    </div>
+    <script src="lunch.js" defer></script>
+    <script src="../../js/nav.js" defer></script>
+    <script src="../../js/lab.js" defer></script>
+  </body>
+</html>
